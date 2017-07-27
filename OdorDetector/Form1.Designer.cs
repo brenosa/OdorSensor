@@ -42,23 +42,23 @@
             this.chartSensor = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnConectar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.btnTrain = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtPorta = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSensor1 = new System.Windows.Forms.Label();
             this.updateChart = new System.Windows.Forms.Timer(this.components);
-            this.txtPorta = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblSensor2 = new System.Windows.Forms.Label();
-            this.lblSensor3 = new System.Windows.Forms.Label();
-            this.lblSensor4 = new System.Windows.Forms.Label();
             this.lblSensor5 = new System.Windows.Forms.Label();
+            this.lblSensor4 = new System.Windows.Forms.Label();
+            this.lblSensor3 = new System.Windows.Forms.Label();
+            this.lblSensor2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartSensor)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -132,8 +132,8 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnConectar);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnTest);
+            this.groupBox1.Controls.Add(this.btnTrain);
             this.groupBox1.Location = new System.Drawing.Point(20, 31);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -153,25 +153,27 @@
             this.btnConectar.UseVisualStyleBackColor = true;
             this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
-            // button3
+            // btnTest
             // 
-            this.button3.Location = new System.Drawing.Point(12, 94);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 21);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Identificar Aroma";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnTest.Location = new System.Drawing.Point(12, 94);
+            this.btnTest.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(100, 21);
+            this.btnTest.TabIndex = 2;
+            this.btnTest.Text = "Identificar Aroma";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
-            // button2
+            // btnTrain
             // 
-            this.button2.Location = new System.Drawing.Point(12, 52);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 37);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Treinar Rede Neural";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnTrain.Location = new System.Drawing.Point(12, 52);
+            this.btnTrain.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTrain.Name = "btnTrain";
+            this.btnTrain.Size = new System.Drawing.Size(100, 37);
+            this.btnTrain.TabIndex = 1;
+            this.btnTrain.Text = "Treinar Rede Neural";
+            this.btnTrain.UseVisualStyleBackColor = true;
+            this.btnTrain.Click += new System.EventHandler(this.btnTrain_Click);
             // 
             // groupBox6
             // 
@@ -183,6 +185,18 @@
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Conexão";
+            // 
+            // txtPorta
+            // 
+            this.txtPorta.Location = new System.Drawing.Point(73, 27);
+            this.txtPorta.Name = "txtPorta";
+            this.txtPorta.Size = new System.Drawing.Size(39, 20);
+            this.txtPorta.TabIndex = 6;
+            this.txtPorta.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -206,18 +220,6 @@
             // 
             this.updateChart.Interval = 500;
             this.updateChart.Tick += new System.EventHandler(this.updateChart_Tick);
-            // 
-            // txtPorta
-            // 
-            this.txtPorta.Location = new System.Drawing.Point(73, 27);
-            this.txtPorta.Name = "txtPorta";
-            this.txtPorta.Size = new System.Drawing.Size(39, 20);
-            this.txtPorta.TabIndex = 6;
-            this.txtPorta.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
             // 
             // tableLayoutPanel1
             // 
@@ -245,45 +247,41 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(908, 59);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
-            // label2
+            // lblSensor5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 15);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Sensor 1:";
+            this.lblSensor5.AutoSize = true;
+            this.lblSensor5.Location = new System.Drawing.Point(727, 25);
+            this.lblSensor5.Name = "lblSensor5";
+            this.lblSensor5.Size = new System.Drawing.Size(62, 13);
+            this.lblSensor5.TabIndex = 15;
+            this.lblSensor5.Text = "Sem Dados";
             // 
-            // label3
+            // lblSensor4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(184, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 15);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Sensor 2:";
+            this.lblSensor4.AutoSize = true;
+            this.lblSensor4.Location = new System.Drawing.Point(546, 25);
+            this.lblSensor4.Name = "lblSensor4";
+            this.lblSensor4.Size = new System.Drawing.Size(62, 13);
+            this.lblSensor4.TabIndex = 14;
+            this.lblSensor4.Text = "Sem Dados";
             // 
-            // label4
+            // lblSensor3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(365, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 15);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Sensor 3:";
+            this.lblSensor3.AutoSize = true;
+            this.lblSensor3.Location = new System.Drawing.Point(365, 25);
+            this.lblSensor3.Name = "lblSensor3";
+            this.lblSensor3.Size = new System.Drawing.Size(60, 13);
+            this.lblSensor3.TabIndex = 13;
+            this.lblSensor3.Text = "Sem dados";
             // 
-            // label5
+            // lblSensor2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(546, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 15);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Sensor 4:";
+            this.lblSensor2.AutoSize = true;
+            this.lblSensor2.Location = new System.Drawing.Point(184, 25);
+            this.lblSensor2.Name = "lblSensor2";
+            this.lblSensor2.Size = new System.Drawing.Size(62, 13);
+            this.lblSensor2.TabIndex = 12;
+            this.lblSensor2.Text = "Sem Dados";
             // 
             // label6
             // 
@@ -295,41 +293,45 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Sensor 5:";
             // 
-            // lblSensor2
+            // label5
             // 
-            this.lblSensor2.AutoSize = true;
-            this.lblSensor2.Location = new System.Drawing.Point(184, 25);
-            this.lblSensor2.Name = "lblSensor2";
-            this.lblSensor2.Size = new System.Drawing.Size(62, 13);
-            this.lblSensor2.TabIndex = 12;
-            this.lblSensor2.Text = "Sem Dados";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(546, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 15);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Sensor 4:";
             // 
-            // lblSensor3
+            // label4
             // 
-            this.lblSensor3.AutoSize = true;
-            this.lblSensor3.Location = new System.Drawing.Point(365, 25);
-            this.lblSensor3.Name = "lblSensor3";
-            this.lblSensor3.Size = new System.Drawing.Size(60, 13);
-            this.lblSensor3.TabIndex = 13;
-            this.lblSensor3.Text = "Sem dados";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(365, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 15);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Sensor 3:";
             // 
-            // lblSensor4
+            // label3
             // 
-            this.lblSensor4.AutoSize = true;
-            this.lblSensor4.Location = new System.Drawing.Point(546, 25);
-            this.lblSensor4.Name = "lblSensor4";
-            this.lblSensor4.Size = new System.Drawing.Size(62, 13);
-            this.lblSensor4.TabIndex = 14;
-            this.lblSensor4.Text = "Sem Dados";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(184, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 15);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Sensor 2:";
             // 
-            // lblSensor5
+            // label2
             // 
-            this.lblSensor5.AutoSize = true;
-            this.lblSensor5.Location = new System.Drawing.Point(727, 25);
-            this.lblSensor5.Name = "lblSensor5";
-            this.lblSensor5.Size = new System.Drawing.Size(62, 13);
-            this.lblSensor5.TabIndex = 15;
-            this.lblSensor5.Text = "Sem Dados";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Sensor 1:";
             // 
             // Form1
             // 
@@ -362,8 +364,8 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSensor;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnTrain;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnConectar;
         private System.Windows.Forms.Label label1;

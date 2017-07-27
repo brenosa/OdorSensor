@@ -2,7 +2,6 @@
 using System.IO.Ports;
 using System.Windows.Forms;
 using System.Threading;
-using System.ComponentModel;
 
 namespace OdorDetector
 {
@@ -10,7 +9,8 @@ namespace OdorDetector
     {
         double i = 0;
         String sensorVoltage;
-        SerialPort serialPort = new SerialPort();       
+        SerialPort serialPort = new SerialPort();
+        NeuralNetwork neuralNetwork = new NeuralNetwork();
         private Thread readThread = null;        
 
         public Form1()
@@ -101,6 +101,17 @@ namespace OdorDetector
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             stopRead();
+        }
+
+        private void btnTrain_Click(object sender, EventArgs e)
+        {            
+            neuralNetwork.create();
+            neuralNetwork.train();            
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            neuralNetwork.test();
         }
     }
 }
