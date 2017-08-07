@@ -2,32 +2,92 @@
 using System.IO.Ports;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
+using System.Collections.Generic;
 
 namespace OdorDetector
 {
     public partial class Form1 : Form
-    {
-        double i = 0;
-        String sensorVoltage;
+    {        
         SerialPort serialPort = new SerialPort();
         NeuralNetwork neuralNetwork = new NeuralNetwork();
-        private Thread readThread = null;        
+        List<Aroma> aromas = new List<Aroma>();
+        private Thread readThread = null;
+        double x = 0;
+        string sensorVoltage;
+        double[][] trainingData;
+        double[][] idealData;
 
         public Form1()
         {
             InitializeComponent();
-        }       
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            try
+            {   // Open the text file using a stream reader.
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\enum.txt";
+                string[] lines = File.ReadAllLines(path);
+
+                // Display the file contents by using a foreach loop.                
+                foreach (string line in lines)
+                {
+                    Aroma aroma = new Aroma();
+                    var splittedLine = line.Split(' ');
+                    aroma.type = Double.Parse(splittedLine[0]);
+                    aroma.name = splittedLine[1];
+                    aromas.Add(aroma);
+                }
+                //bindingSource1.DataSource = countries;
+
+                cmbTiposGas.DataSource = aromas;
+                cmbTiposGas.DisplayMember = "name";
+                cmbTiposGas.ValueMember = "type";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            stopRead();
+        }
+
+        //****************************************************************************
+        
+        private void clearChartSeries()
+        {
+            chartSensor.Series[0].Points.Clear();
+            chartSensor.Series[1].Points.Clear();
+            x = 0;
+        }
+
+        private void updateChart_Tick(object sender, EventArgs e)
+        {
+            x += 0.5;            
+            chartSensor.Series[0].Points.AddXY(x, sensorVoltage);
+            lblSensor1.Text = sensorVoltage.Replace('\r',' ') + "mV";
+        }
+
+        //****************************************************************************
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
-            if (serialPort.IsOpen) {                
+            if (serialPort.IsOpen)
+            {
                 updateChart.Stop();
                 stopRead();
                 clearChartSeries();
                 btnConectar.Text = "Ativar Sensores";
-                
+
             }
-            else { 
+            else
+            {
                 try
                 {
                     startRead();
@@ -39,20 +99,6 @@ namespace OdorDetector
                     MessageBox.Show("Conexão falhou", "ERRO");
                 }
             }
-        }
-
-        private void clearChartSeries()
-        {
-            chartSensor.Series[0].Points.Clear();
-            chartSensor.Series[1].Points.Clear();
-            i = 0;
-        }
-
-        private void updateChart_Tick(object sender, EventArgs e)
-        {
-            i += 0.5;            
-            chartSensor.Series[0].Points.AddXY(i, sensorVoltage);
-            lblSensor1.Text = sensorVoltage.Replace('\r',' ') + "mV";
         }
 
         private void startRead()
@@ -96,22 +142,83 @@ namespace OdorDetector
             catch (NullReferenceException)
             {
             }
-        }
+        }    
         
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            stopRead();
-        }
-
-        private void btnTrain_Click(object sender, EventArgs e)
-        {            
-            neuralNetwork.create();
-            neuralNetwork.train();            
-        }
+        //******************************************************************************
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            neuralNetwork.test();
+            //neuralNetwork.test();
+        }
+
+        private void btnSalvarRede_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                neuralNetwork.save(saveFileDialog1.FileName);                
+            }
+        }
+
+        private void btnCarregarRede_Click(object sender, EventArgs e)
+        {
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                neuralNetwork.load(openFileDialog1.FileName);
+            }
+        }
+
+        private void btnCriarRede_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {   // Abre arquivo de treinamento
+                    using (StreamReader sr = new StreamReader(openFileDialog1.FileName))
+                    {
+                        // Read the stream to a string, and write the string to the console.
+                        string line;
+                        string[][] points = new string[5][];
+                        int counter = 0;
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            points[counter] = line.Split(' ');
+                            counter++;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("The file could not be read:");
+                    Console.WriteLine(ex.Message);
+                }
+                //neuralNetwork.create(2);
+                //neuralNetwork.train();
+            }
+        }
+
+        //**************************************************************************************
+        
+        private void btnSalvarTreinamento_Click_1(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter file =
+                    new StreamWriter(saveFileDialog1.FileName, true))
+                {                    
+                    //Expected result
+                    file.Write(String.Format("{0:0.00}",cmbTiposGas.SelectedValue));
+                    //Y values
+                    for (int i = 0; i < 1; i++)//sensors
+                    {
+                        for (int j = 0; j < 1; j++)//points                         
+                        {
+                            file.Write(" " + chartSensor.Series[i].Points[j].YValues[0]);
+                        }
+                    }
+                    file.WriteLine();
+                }
+            }
         }
     }
 }

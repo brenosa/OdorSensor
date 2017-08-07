@@ -5,17 +5,17 @@ using Encog.ML.Data.Basic;
 using Encog.ML.Train;
 using Encog.ML.SVM.Training;
 using Encog;
+using System.IO;
 
 namespace OdorDetector
 {
     class NeuralNetwork
-    {
-        //private Encog.Neural.Networks.BasicNetwork network;
+    {      
         private IMLDataSet trainingSet;
         private SupportVectorMachine network;
 
         //train set
-        public static double[][] trainingData =
+        /*public static double[][] trainingData =
         {
             new[] {0.0, 0.0},
             new[] {0.0, 1.0},
@@ -30,29 +30,31 @@ namespace OdorDetector
             new[] {1.0}, //Listerine
             new[] {2.0}, //Álcool de cozinha
             new[] {3.0} //Cerveja
-        };
+        };*/
 
         //input test
-        public static double[] inputData = { 0.9, 0.1 };
+        //public static double[] inputData = { 0.9, 0.1 };
         
 
-        public void create()
+        public void create(int inputSize)
         {
-
             // create a neural network, without using a factory
-            network = new SupportVectorMachine(2, false); // 2 input, & false for classification
-
-            // create a neural network, without using a factory
-            //network = new BasicNetwork();               
-            //network.AddLayer(new BasicLayer(null, true, 2));
-            //network.AddLayer(new BasicLayer(new ActivationSigmoid(), true, 3));
-            //network.AddLayer(new BasicLayer(new ActivationSigmoid(), true, 3));
-            //network.AddLayer(new BasicLayer(new ActivationSigmoid(), false, 1));
-            //network.Structure.FinalizeStructure();
-            //network.Reset();
+            network = new SupportVectorMachine(inputSize, false); // 2 input, & false for classification          
         }
 
-        public void train()
+        public void save(string location)
+        {
+            FileInfo networkFile = new FileInfo(location + ".eg");
+            Encog.Persist.EncogDirectoryPersistence.SaveObject(networkFile, network);
+        }
+
+        public void load(string location)
+        {
+            FileInfo networkFile = new FileInfo(location + ".eg");
+            network = (SupportVectorMachine)(Encog.Persist.EncogDirectoryPersistence.LoadObject(networkFile));
+        }
+
+        public void train(double[][] trainingData, double[][] idealData)
         {
             // create training data
             trainingSet = new BasicMLDataSet(trainingData, idealData);
@@ -72,11 +74,11 @@ namespace OdorDetector
             train.FinishTraining();
         }
 
-        public void test()
+        public void test(double[] inputData)
         {
             // test the neural network
-            IMLData input = new BasicMLData(inputData);            
-            //var testSet = new BasicMLDataSet(inputTest, XORIdeal);
+            IMLData input = new BasicMLData(inputData);          
+            
             Console.WriteLine(@"Neural Network Results:");           
             IMLData output = network.Compute(input);
 
@@ -88,6 +90,7 @@ namespace OdorDetector
             Console.WriteLine("Ideal = 2");
 
             EncogFramework.Instance.Shutdown();
-        }        
+        }   
+              
     }
 }
