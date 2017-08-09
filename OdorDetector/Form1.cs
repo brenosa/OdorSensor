@@ -8,15 +8,15 @@ using System.Collections.Generic;
 namespace OdorDetector
 {
     public partial class Form1 : Form
-    {        
+    {
         SerialPort serialPort = new SerialPort();
         NeuralNetwork neuralNetwork = new NeuralNetwork();
         List<Aroma> aromas = new List<Aroma>();
         private Thread readThread = null;
         double x = 0;
         string sensorVoltage;
-        double[][] trainingData;
-        double[][] idealData;
+        private string inputLocation = @"input.txt";
+        private string outputLocation = @"output.txt";
 
         public Form1()
         {
@@ -59,7 +59,7 @@ namespace OdorDetector
         }
 
         //****************************************************************************
-        
+
         private void clearChartSeries()
         {
             chartSensor.Series[0].Points.Clear();
@@ -69,9 +69,9 @@ namespace OdorDetector
 
         private void updateChart_Tick(object sender, EventArgs e)
         {
-            x += 0.5;            
+            x += 0.5;
             chartSensor.Series[0].Points.AddXY(x, sensorVoltage);
-            lblSensor1.Text = sensorVoltage.Replace('\r',' ') + "mV";
+            lblSensor1.Text = sensorVoltage.Replace('\r', ' ') + "mV";
         }
 
         //****************************************************************************
@@ -116,9 +116,9 @@ namespace OdorDetector
             {
                 try
                 {
-                    if (serialPort.BytesToRead > 0)                    
-                        sensorVoltage = serialPort.ReadLine();                       
-                    
+                    if (serialPort.BytesToRead > 0)
+                        sensorVoltage = serialPort.ReadLine();
+
                 }
                 catch (TimeoutException) { }
             }
@@ -142,20 +142,21 @@ namespace OdorDetector
             catch (NullReferenceException)
             {
             }
-        }    
-        
+        }
+
         //******************************************************************************
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            //neuralNetwork.test();
+            int output = neuralNetwork.test(getChartPoints());
+            MessageBox.Show("Detectado: " + cmbTiposGas.Items[output].ToString());
         }
 
         private void btnSalvarRede_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                neuralNetwork.save(saveFileDialog1.FileName);                
+                neuralNetwork.save(saveFileDialog1.FileName);
             }
         }
 
@@ -170,55 +171,61 @@ namespace OdorDetector
 
         private void btnCriarRede_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            try
+            {           
+                // LOADING MY OWN DATASET                        
+                double[][] input = neuralNetwork.loadFromFile(inputLocation);   //Training INPUTS
+                double[][] desiredOutput = neuralNetwork.loadFromFile(outputLocation); //Desired OUTPUTS
+
+                neuralNetwork.create(input[0].Length);
+                neuralNetwork.train(input, desiredOutput);
+                
+            }
+            catch (Exception ex)
             {
-                try
-                {   // Abre arquivo de treinamento
-                    using (StreamReader sr = new StreamReader(openFileDialog1.FileName))
-                    {
-                        // Read the stream to a string, and write the string to the console.
-                        string line;
-                        string[][] points = new string[5][];
-                        int counter = 0;
-                        while ((line = sr.ReadLine()) != null)
-                        {
-                            points[counter] = line.Split(' ');
-                            counter++;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("The file could not be read:");
-                    Console.WriteLine(ex.Message);
-                }
-                //neuralNetwork.create(2);
-                //neuralNetwork.train();
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(ex.Message);
             }
         }
 
         //**************************************************************************************
-        
+
         private void btnSalvarTreinamento_Click_1(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            //input
+            using (StreamWriter file = new StreamWriter(inputLocation, true))
             {
-                using (StreamWriter file =
-                    new StreamWriter(saveFileDialog1.FileName, true))
-                {                    
-                    //Expected result
-                    file.Write(String.Format("{0:0.00}",cmbTiposGas.SelectedValue));
-                    //Y values
-                    for (int i = 0; i < 1; i++)//sensors
-                    {
-                        for (int j = 0; j < 1; j++)//points                         
-                        {
-                            file.Write(" " + chartSensor.Series[i].Points[j].YValues[0]);
-                        }
-                    }
-                    file.WriteLine();
-                }
+                double[] chartPoints = getChartPoints();
+                foreach (var point in chartPoints)
+                {
+                    file.Write(point.ToString() + " ");
+                }                
+                file.WriteLine();
             }
+            //desired output
+            using (StreamWriter file = new StreamWriter(outputLocation, true))
+            {
+                //Expected result
+                file.Write(String.Format("{0:0.00}", cmbTiposGas.SelectedValue));
+                file.WriteLine();
+            }
+            MessageBox.Show("Salvo");
         }
+
+        //*************************************************************************
+
+        public double[] getChartPoints()
+        {
+            var rows = new List<double>();
+            //Y values
+            for (int i = 0; i < 1; i++)//sensors
+            {
+                for (int j = 0; j < 1; j++)//points                         
+                {
+                    rows.Add(chartSensor.Series[i].Points[j].YValues[0]);
+                }
+            } 
+            return rows.ToArray();
+        }           
     }
 }

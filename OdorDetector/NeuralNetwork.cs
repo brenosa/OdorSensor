@@ -6,6 +6,8 @@ using Encog.ML.Train;
 using Encog.ML.SVM.Training;
 using Encog;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OdorDetector
 {
@@ -48,16 +50,26 @@ namespace OdorDetector
             Encog.Persist.EncogDirectoryPersistence.SaveObject(networkFile, network);
         }
 
-        public void load(string location)
+        public double[][] loadFromFile(string filePath)
         {
-            FileInfo networkFile = new FileInfo(location + ".eg");
+            var rows = new List<double[]>();
+            foreach (var line in File.ReadAllLines(filePath))
+            {
+                rows.Add(line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(double.Parse).ToArray());
+            }            
+            return rows.ToArray();
+        }
+
+        public void load(string filePath)
+        {
+            FileInfo networkFile = new FileInfo(filePath);
             network = (SupportVectorMachine)(Encog.Persist.EncogDirectoryPersistence.LoadObject(networkFile));
         }
 
-        public void train(double[][] trainingData, double[][] idealData)
+        public void train(double[][] trainingInput, double[][] idealOutput)
         {
             // create training data
-            trainingSet = new BasicMLDataSet(trainingData, idealData);
+            trainingSet = new BasicMLDataSet(trainingInput, idealOutput);
 
             // train the neural network
             IMLTrain train = new SVMSearchTrain(network, trainingSet);
@@ -74,7 +86,7 @@ namespace OdorDetector
             train.FinishTraining();
         }
 
-        public void test(double[] inputData)
+        public int test(double[] inputData)
         {
             // test the neural network
             IMLData input = new BasicMLData(inputData);          
@@ -86,10 +98,10 @@ namespace OdorDetector
             for (int i = 0; i< inputData.Length; i++){
                 Console.WriteLine(inputData[i]);
             }
-            Console.WriteLine("Output = " + output[0]);
-            Console.WriteLine("Ideal = 2");
-
+            Console.WriteLine("Output = " + output[0]);            
             EncogFramework.Instance.Shutdown();
+            
+            return (int)Math.Round(output[0], MidpointRounding.AwayFromZero);
         }   
               
     }
