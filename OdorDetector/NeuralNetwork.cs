@@ -91,17 +91,18 @@ namespace OdorDetector
             // test the neural network
             IMLData input = new BasicMLData(inputData);          
             
-            Console.WriteLine(@"Neural Network Results:");           
+            Console.WriteLine(@"Neural Network Results:");
+           
             IMLData output = network.Compute(input);
-
             Console.WriteLine("Input: ");
-            for (int i = 0; i< inputData.Length; i++){
+            for (int i = 0; i < inputData.Length; i++)
+            {
                 Console.WriteLine(inputData[i]);
             }
-            Console.WriteLine("Output = " + output[0]);            
+            Console.WriteLine("Output = " + output[0]);
             EncogFramework.Instance.Shutdown();
-            
-            return (int)Math.Round(output[0], MidpointRounding.AwayFromZero);
+
+            return (int)Math.Round(output[0], MidpointRounding.AwayFromZero);                   
         }   
               
     }

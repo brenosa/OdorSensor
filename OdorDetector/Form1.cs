@@ -149,7 +149,14 @@ namespace OdorDetector
         private void btnTest_Click(object sender, EventArgs e)
         {
             int output = neuralNetwork.test(getChartPoints());
-            MessageBox.Show("Detectado: " + cmbTiposGas.Items[output].ToString());
+            try
+            {
+                MessageBox.Show("Detectado: " + cmbTiposGas.Items[output].Name);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Rede não definida");
+            }           
         }
 
         private void btnSalvarRede_Click(object sender, EventArgs e)
