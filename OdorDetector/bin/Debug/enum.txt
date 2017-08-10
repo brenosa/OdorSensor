@@ -1,0 +1,4 @@
+cerveja
+gato
+papagaio
+elefante

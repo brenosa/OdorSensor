@@ -1,6 +1,6 @@
 ﻿namespace OdorDetector
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,21 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint17 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint18 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint19 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint20 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             this.chartSensor = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnConectar = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtPorta = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSensor1 = new System.Windows.Forms.Label();
@@ -60,17 +59,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.treinamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCarregarRede = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCriarRede = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSalvarNovaRede = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmbTiposGas = new System.Windows.Forms.ComboBox();
             this.btnSalvarTreinamento = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartSensor)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPorta)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -79,83 +73,85 @@
             // 
             // chartSensor
             // 
-            chartArea1.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
-            chartArea1.AxisX.Interval = 60D;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.MajorGrid.Interval = 1D;
-            chartArea1.AxisX.MajorTickMark.Interval = 30D;
-            chartArea1.AxisX.Maximum = 300D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.MinorTickMark.Interval = 50D;
-            chartArea1.AxisX.ScrollBar.BackColor = System.Drawing.Color.Silver;
-            chartArea1.AxisX.Title = "Time (s)";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.Interval = 1000D;
-            chartArea1.AxisY.MajorGrid.Interval = 500D;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.MajorTickMark.Enabled = false;
-            chartArea1.AxisY.MajorTickMark.Interval = 0.2D;
-            chartArea1.AxisY.Maximum = 5000D;
-            chartArea1.AxisY.Title = "Sensor output (mV)";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.Name = "ChartArea1";
-            this.chartSensor.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartSensor.Legends.Add(legend1);
+            chartArea5.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
+            chartArea5.AxisX.Interval = 60D;
+            chartArea5.AxisX.MajorGrid.Enabled = false;
+            chartArea5.AxisX.MajorGrid.Interval = 1D;
+            chartArea5.AxisX.MajorTickMark.Interval = 30D;
+            chartArea5.AxisX.Maximum = 300D;
+            chartArea5.AxisX.Minimum = 0D;
+            chartArea5.AxisX.MinorTickMark.Interval = 50D;
+            chartArea5.AxisX.ScrollBar.BackColor = System.Drawing.Color.Silver;
+            chartArea5.AxisX.Title = "Time (s)";
+            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.AxisY.Interval = 1000D;
+            chartArea5.AxisY.MajorGrid.Interval = 500D;
+            chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea5.AxisY.MajorTickMark.Enabled = false;
+            chartArea5.AxisY.MajorTickMark.Interval = 0.2D;
+            chartArea5.AxisY.Maximum = 5000D;
+            chartArea5.AxisY.Title = "Sensor output (mV)";
+            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea5.Name = "ChartArea1";
+            this.chartSensor.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartSensor.Legends.Add(legend5);
             this.chartSensor.Location = new System.Drawing.Point(228, 38);
             this.chartSensor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartSensor.Name = "chartSensor";
             this.chartSensor.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.Red;
-            series1.Legend = "Legend1";
-            series1.Name = "sensor1";
-            series1.Points.Add(dataPoint1);
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Color = System.Drawing.Color.Blue;
-            series2.Legend = "Legend1";
-            series2.Name = "sensor2";
-            series2.Points.Add(dataPoint2);
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Color = System.Drawing.Color.Gold;
-            series3.Legend = "Legend1";
-            series3.Name = "sensor3";
-            series3.Points.Add(dataPoint3);
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series4.Legend = "Legend1";
-            series4.Name = "sensor4";
-            series4.Points.Add(dataPoint4);
-            this.chartSensor.Series.Add(series1);
-            this.chartSensor.Series.Add(series2);
-            this.chartSensor.Series.Add(series3);
-            this.chartSensor.Series.Add(series4);
+            series17.ChartArea = "ChartArea1";
+            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series17.Color = System.Drawing.Color.Red;
+            series17.Legend = "Legend1";
+            series17.Name = "sensor1";
+            series17.Points.Add(dataPoint17);
+            series18.ChartArea = "ChartArea1";
+            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series18.Color = System.Drawing.Color.Blue;
+            series18.Legend = "Legend1";
+            series18.Name = "sensor2";
+            series18.Points.Add(dataPoint18);
+            series19.BorderWidth = 2;
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series19.Color = System.Drawing.Color.Gold;
+            series19.Legend = "Legend1";
+            series19.Name = "sensor3";
+            series19.Points.Add(dataPoint19);
+            series20.BorderWidth = 2;
+            series20.ChartArea = "ChartArea1";
+            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series20.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series20.Legend = "Legend1";
+            series20.Name = "sensor4";
+            series20.Points.Add(dataPoint20);
+            this.chartSensor.Series.Add(series17);
+            this.chartSensor.Series.Add(series18);
+            this.chartSensor.Series.Add(series19);
+            this.chartSensor.Series.Add(series20);
             this.chartSensor.Size = new System.Drawing.Size(1211, 473);
             this.chartSensor.TabIndex = 0;
             this.chartSensor.Text = "Sensor";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPorta);
             this.groupBox1.Controls.Add(this.btnConectar);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnTest);
             this.groupBox1.Location = new System.Drawing.Point(27, 38);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(173, 109);
+            this.groupBox1.Size = new System.Drawing.Size(173, 156);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opções";
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(16, 27);
+            this.btnConectar.Location = new System.Drawing.Point(16, 65);
             this.btnConectar.Margin = new System.Windows.Forms.Padding(4);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(139, 31);
@@ -166,7 +162,8 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(16, 64);
+            this.btnTest.Enabled = false;
+            this.btnTest.Location = new System.Drawing.Point(16, 109);
             this.btnTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(139, 26);
@@ -175,22 +172,9 @@
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.txtPorta);
-            this.groupBox6.Controls.Add(this.label1);
-            this.groupBox6.Location = new System.Drawing.Point(27, 153);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(173, 70);
-            this.groupBox6.TabIndex = 4;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Conexão";
-            // 
             // txtPorta
             // 
-            this.txtPorta.Location = new System.Drawing.Point(97, 33);
+            this.txtPorta.Location = new System.Drawing.Point(102, 29);
             this.txtPorta.Margin = new System.Windows.Forms.Padding(4);
             this.txtPorta.Name = "txtPorta";
             this.txtPorta.Size = new System.Drawing.Size(52, 22);
@@ -204,7 +188,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 36);
+            this.label1.Location = new System.Drawing.Point(13, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 17);
@@ -362,47 +346,23 @@
             // treinamentoToolStripMenuItem
             // 
             this.treinamentoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCarregarRede,
-            this.btnCriarRede,
-            this.btnSalvarNovaRede});
+            this.btnCriarRede});
             this.treinamentoToolStripMenuItem.Name = "treinamentoToolStripMenuItem";
             this.treinamentoToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.treinamentoToolStripMenuItem.Text = "Rede";
             // 
-            // btnCarregarRede
-            // 
-            this.btnCarregarRede.Name = "btnCarregarRede";
-            this.btnCarregarRede.Size = new System.Drawing.Size(141, 26);
-            this.btnCarregarRede.Text = "Carregar";
-            this.btnCarregarRede.Click += new System.EventHandler(this.btnCarregarRede_Click);
-            // 
             // btnCriarRede
             // 
             this.btnCriarRede.Name = "btnCriarRede";
-            this.btnCriarRede.Size = new System.Drawing.Size(141, 26);
+            this.btnCriarRede.Size = new System.Drawing.Size(181, 26);
             this.btnCriarRede.Text = "Criar";
             this.btnCriarRede.Click += new System.EventHandler(this.btnCriarRede_Click);
-            // 
-            // btnSalvarNovaRede
-            // 
-            this.btnSalvarNovaRede.Name = "btnSalvarNovaRede";
-            this.btnSalvarNovaRede.Size = new System.Drawing.Size(141, 26);
-            this.btnSalvarNovaRede.Text = "Salvar";
-            this.btnSalvarNovaRede.Click += new System.EventHandler(this.btnSalvarRede_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.OverwritePrompt = false;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cmbTiposGas);
             this.groupBox2.Controls.Add(this.btnSalvarTreinamento);
-            this.groupBox2.Location = new System.Drawing.Point(27, 229);
+            this.groupBox2.Location = new System.Drawing.Point(27, 198);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -421,6 +381,7 @@
             // 
             // btnSalvarTreinamento
             // 
+            this.btnSalvarTreinamento.Enabled = false;
             this.btnSalvarTreinamento.Location = new System.Drawing.Point(16, 49);
             this.btnSalvarTreinamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvarTreinamento.Name = "btnSalvarTreinamento";
@@ -437,7 +398,6 @@
             this.ClientSize = new System.Drawing.Size(1456, 613);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chartSensor);
             this.Controls.Add(this.menuStrip1);
@@ -446,14 +406,14 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Odor Detection";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
+            this.Load += new System.EventHandler(this.mainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartSensor)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPorta)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -470,7 +430,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSensor;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnTest;
-        private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnConectar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblSensor1;
@@ -488,10 +447,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem treinamentoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem btnCarregarRede;
-        private System.Windows.Forms.ToolStripMenuItem btnSalvarNovaRede;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cmbTiposGas;
         private System.Windows.Forms.Button btnSalvarTreinamento;
