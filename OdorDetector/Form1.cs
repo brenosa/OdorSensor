@@ -14,9 +14,9 @@ namespace OdorDetector
         List<Aroma> aromas = new List<Aroma>();
         private Thread readThread = null;
         double x = 0;
-        string sensorVoltage;
-        private string inputLocation = @"input.txt";
-        private string outputLocation = @"output.txt";
+        string sensorVoltage;        
+        String normalizedInputLocation = @"normalizedInput.csv";
+        String inputLocation = @"input.csv";
 
         public Form1()
         {
@@ -34,17 +34,8 @@ namespace OdorDetector
                 // Display the file contents by using a foreach loop.                
                 foreach (string line in lines)
                 {
-                    Aroma aroma = new Aroma();
-                    var splittedLine = line.Split(' ');
-                    aroma.type = Double.Parse(splittedLine[0]);
-                    aroma.name = splittedLine[1];
-                    aromas.Add(aroma);
-                }
-                //bindingSource1.DataSource = countries;
-
-                cmbTiposGas.DataSource = aromas;
-                cmbTiposGas.DisplayMember = "name";
-                cmbTiposGas.ValueMember = "type";
+                    cmbTiposGas.Items.Add(line);                   
+                }                
             }
             catch (Exception ex)
             {
@@ -56,9 +47,10 @@ namespace OdorDetector
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             stopRead();
+            //EncogFramework.Instance.Shutdown();
         }
 
-        //****************************************************************************
+        //******************************CHART**********************************************
 
         private void clearChartSeries()
         {
@@ -74,7 +66,7 @@ namespace OdorDetector
             lblSensor1.Text = sensorVoltage.Replace('\r', ' ') + "mV";
         }
 
-        //****************************************************************************
+        //*****************************ARDUINO***********************************************
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
@@ -90,7 +82,7 @@ namespace OdorDetector
             {
                 try
                 {
-                    startRead();
+                    connectToArduino();
                     updateChart.Start();
                     btnConectar.Text = "Desativar Sensores";
                 }
@@ -101,16 +93,16 @@ namespace OdorDetector
             }
         }
 
-        private void startRead()
+        private void connectToArduino()
         {
             serialPort.BaudRate = 9600;
             serialPort.PortName = "COM" + txtPorta.Text;
             serialPort.Open();
-            readThread = new Thread(new ThreadStart(this.Read));
+            readThread = new Thread(new ThreadStart(this.startRead));
             readThread.Start();
         }
 
-        public void Read()
+        public void startRead()
         {
             while (serialPort.IsOpen)
             {
@@ -144,18 +136,23 @@ namespace OdorDetector
             }
         }
 
-        //******************************************************************************
+        //*******************************NEURAL NETWORK***************************************
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            int output = neuralNetwork.test(getChartPoints());
+            /*rato,1.0,2.0,3.0
+            gato,2.0,2.0,3.0
+            cachorro,1.0,1.0,3.0
+            peixe,3.0,2.0,1.0*/
+
+            string[] teste = { "1.0", "2.0", "3.1" };
             try
             {
-                MessageBox.Show("Detectado: " + cmbTiposGas.Items[output].Name);
+                MessageBox.Show("Detectado: " + neuralNetwork.test(teste));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Rede não definida");
+                MessageBox.Show(ex.Message);
             }           
         }
 
@@ -179,19 +176,14 @@ namespace OdorDetector
         private void btnCriarRede_Click(object sender, EventArgs e)
         {
             try
-            {           
-                // LOADING MY OWN DATASET                        
-                double[][] input = neuralNetwork.loadFromFile(inputLocation);   //Training INPUTS
-                double[][] desiredOutput = neuralNetwork.loadFromFile(outputLocation); //Desired OUTPUTS
-
-                neuralNetwork.create(input[0].Length);
-                neuralNetwork.train(input, desiredOutput);
-                
+            {                   
+                neuralNetwork.create();
+                neuralNetwork.train();
+                MessageBox.Show("Rede Criada");
             }
             catch (Exception ex)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(ex.Message);
+            {                
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -202,34 +194,41 @@ namespace OdorDetector
             //input
             using (StreamWriter file = new StreamWriter(inputLocation, true))
             {
-                double[] chartPoints = getChartPoints();
+                file.Write(cmbTiposGas.SelectedValue);
+                string[] chartPoints = getChartPoints();
                 foreach (var point in chartPoints)
                 {
-                    file.Write(point.ToString() + " ");
+                    file.Write("," + point);
                 }                
                 file.WriteLine();
-            }
-            //desired output
-            using (StreamWriter file = new StreamWriter(outputLocation, true))
-            {
-                //Expected result
-                file.Write(String.Format("{0:0.00}", cmbTiposGas.SelectedValue));
-                file.WriteLine();
-            }
+            }          
             MessageBox.Show("Salvo");
         }
 
         //*************************************************************************
 
-        public double[] getChartPoints()
+        public void getNormalizedData2()
         {
-            var rows = new List<double>();
+            /*var sourceFile = new FileInfo(inputLocation);
+            var targetFile = new FileInfo(normalizedInputLocation);
+            var analyst = new EncogAnalyst();
+            var wizard = new AnalystWizard(analyst);
+            wizard.Wizard(sourceFile, true, AnalystFileFormat.DecpntComma);
+            var norm = new AnalystNormalizeCSV();
+            norm.Analyze(sourceFile, true, CSVFormat.English,analyst);
+            norm.Normalize(targetFile);
+            //analyst.Save(new FileInfo( "stats.ega "));*/
+        }         
+
+        public string[] getChartPoints()
+        {
+            var rows = new List<string>();
             //Y values
             for (int i = 0; i < 1; i++)//sensors
             {
                 for (int j = 0; j < 1; j++)//points                         
                 {
-                    rows.Add(chartSensor.Series[i].Points[j].YValues[0]);
+                    rows.Add(chartSensor.Series[i].Points[j].YValues[0].ToString());
                 }
             } 
             return rows.ToArray();

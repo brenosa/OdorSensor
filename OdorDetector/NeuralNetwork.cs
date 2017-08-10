@@ -1,99 +1,75 @@
 ﻿using System;
-using Encog.ML.SVM;
+using System.IO;
 using Encog.ML.Data;
 using Encog.ML.Data.Basic;
-using Encog.ML.Train;
-using Encog.ML.SVM.Training;
+using Encog.ML.Model;
+using Encog.ML.Factory;
+using Encog.ML.Data.Versatile;
+using Encog.ML;
+using Encog.Util.CSV;
+using Encog.ML.Data.Versatile.Sources;
 using Encog;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
+using Encog.ML.Data.Versatile.Columns;
 
 namespace OdorDetector
 {
     class NeuralNetwork
-    {      
-        private IMLDataSet trainingSet;
-        private SupportVectorMachine network;
+    {            
+        EncogModel model;
+        VersatileMLDataSet normilizedInput;
+        IMLRegression trainingMethod;
+        String inputLocation = @"input.csv";
 
-        //train set
-        /*public static double[][] trainingData =
+        public void create()
         {
-            new[] {0.0, 0.0},
-            new[] {0.0, 1.0},
-            new[] {1.0, 0.0},
-            new[] {1.0, 1.0}
-        };
-      
-        //ideal output
-        public static double[][] idealData =
-        {            
-            new[] {0.0}, //Gasolina
-            new[] {1.0}, //Listerine
-            new[] {2.0}, //Álcool de cozinha
-            new[] {3.0} //Cerveja
-        };*/
-
-        //input test
-        //public static double[] inputData = { 0.9, 0.1 };
-        
-
-        public void create(int inputSize)
-        {
-            // create a neural network, without using a factory
-            network = new SupportVectorMachine(inputSize, false); // 2 input, & false for classification          
+            VersatileMLDataSet input = getCSVData();           
+            model  = new EncogModel(input);
+            model.SelectMethod(input, MLMethodFactory.TypeFeedforward);
+            input.Normalize();
+            normilizedInput = input;
+            //helper = model.Dataset.NormHelper;         
         }
 
         public void save(string location)
         {
             FileInfo networkFile = new FileInfo(location + ".eg");
-            Encog.Persist.EncogDirectoryPersistence.SaveObject(networkFile, network);
-        }
-
-        public double[][] loadFromFile(string filePath)
-        {
-            var rows = new List<double[]>();
-            foreach (var line in File.ReadAllLines(filePath))
-            {
-                rows.Add(line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(double.Parse).ToArray());
-            }            
-            return rows.ToArray();
+            Encog.Persist.EncogDirectoryPersistence.SaveObject(networkFile, model);
         }
 
         public void load(string filePath)
         {
-            FileInfo networkFile = new FileInfo(filePath);
-            network = (SupportVectorMachine)(Encog.Persist.EncogDirectoryPersistence.LoadObject(networkFile));
+            //FileInfo networkFile = new FileInfo(filePath);
+            //model = (EncogModel)(Encog.Persist.EncogDirectoryPersistence.LoadObject(networkFile));
+            //helper = model.Dataset.NormHelper;
+            //TODO normilize data??
+            //TODO best method?
         }
 
-        public void train(double[][] trainingInput, double[][] idealOutput)
+        public void train()
         {
-            // create training data
-            trainingSet = new BasicMLDataSet(trainingInput, idealOutput);
+            // Hold back some data for a final validation.
+            model.HoldBackValidation(0.3, false, 1001);
+            // Choose whatever is the default training type for this model.
+            model.SelectTrainingType(normilizedInput);
+            // Use a 5-fold cross-validated train.  Return the best method found.            
+            trainingMethod = (IMLRegression)model.Crossvalidate(5, true);
 
-            // train the neural network
-            IMLTrain train = new SVMSearchTrain(network, trainingSet);
+            // Display the training and validation errors.
+            Console.WriteLine(@"Training error: " + model.CalculateError(trainingMethod, model.TrainingDataset));
+            Console.WriteLine(@"Validation error: " + model.CalculateError(trainingMethod, model.ValidationDataset));
 
-            int epoch = 1;
-
-            do
-            {
-                train.Iteration();
-                Console.WriteLine(@"Epoch #" + epoch + @" Error:" + train.Error);
-                epoch++;
-            } while (train.Error > 0.01);
-
-            train.FinishTraining();
+            Console.WriteLine(@"Final model: " + trainingMethod);
         }
 
-        public int test(double[] inputData)
+        public string test(string[] inputData)
         {
-            // test the neural network
-            IMLData input = new BasicMLData(inputData);          
-            
+            NormalizationHelper helper = model.Dataset.NormHelper;
+            IMLData normilizedInput = helper.AllocateInputVector();
+            helper.NormalizeInputVector(inputData, ((BasicMLData)normilizedInput).Data, false);
+                        
             Console.WriteLine(@"Neural Network Results:");
            
-            IMLData output = network.Compute(input);
+            IMLData output = trainingMethod.Compute(normilizedInput);
             Console.WriteLine("Input: ");
             for (int i = 0; i < inputData.Length; i++)
             {
@@ -102,8 +78,27 @@ namespace OdorDetector
             Console.WriteLine("Output = " + output[0]);
             EncogFramework.Instance.Shutdown();
 
-            return (int)Math.Round(output[0], MidpointRounding.AwayFromZero);                   
-        }   
-              
+            return helper.DenormalizeOutputVectorToString(output)[0];
+            //return (int)Math.Round(output[0], MidpointRounding.AwayFromZero);                   
+        }
+
+        public VersatileMLDataSet getCSVData()
+        {
+            var source = new CSVDataSource(inputLocation, false, CSVFormat.DecimalPoint);
+            var csv = new ReadCSV(inputLocation, false, CSVFormat.DecimalPoint);
+            csv.Next();
+            VersatileMLDataSet data = new VersatileMLDataSet(source);
+            var outputColumnDefinition = data.DefineSourceColumn("y", 0, ColumnType.Nominal);
+            //MessageBox.Show("" + csv.ColumnCount);
+            for (int i = 1; i < csv.ColumnCount; i++)
+            {
+                data.DefineSourceColumn("x", i, ColumnType.Continuous);
+            }
+
+            data.Analyze();
+            data.DefineSingleOutputOthersInput(outputColumnDefinition);
+            return data;
+        }
+
     }
 }
