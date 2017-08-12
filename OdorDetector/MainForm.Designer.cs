@@ -29,107 +29,97 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint17 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint18 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint19 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint20 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint13 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint14 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint15 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint16 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             this.chartSensor = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnConectar = new System.Windows.Forms.Button();
-            this.btnTest = new System.Windows.Forms.Button();
             this.txtPorta = new System.Windows.Forms.NumericUpDown();
+            this.btnConectar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblSensor1 = new System.Windows.Forms.Label();
+            this.btnTest = new System.Windows.Forms.Button();
             this.updateChart = new System.Windows.Forms.Timer(this.components);
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblSensor5 = new System.Windows.Forms.Label();
-            this.lblSensor4 = new System.Windows.Forms.Label();
-            this.lblSensor3 = new System.Windows.Forms.Label();
-            this.lblSensor2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.treinamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCriarRede = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmbTiposGas = new System.Windows.Forms.ComboBox();
             this.btnSalvarTreinamento = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblPointCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartSensor)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPorta)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // chartSensor
             // 
-            chartArea5.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
-            chartArea5.AxisX.Interval = 60D;
-            chartArea5.AxisX.MajorGrid.Enabled = false;
-            chartArea5.AxisX.MajorGrid.Interval = 1D;
-            chartArea5.AxisX.MajorTickMark.Interval = 30D;
-            chartArea5.AxisX.Maximum = 300D;
-            chartArea5.AxisX.Minimum = 0D;
-            chartArea5.AxisX.MinorTickMark.Interval = 50D;
-            chartArea5.AxisX.ScrollBar.BackColor = System.Drawing.Color.Silver;
-            chartArea5.AxisX.Title = "Time (s)";
-            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisY.Interval = 1000D;
-            chartArea5.AxisY.MajorGrid.Interval = 500D;
-            chartArea5.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea5.AxisY.MajorTickMark.Enabled = false;
-            chartArea5.AxisY.MajorTickMark.Interval = 0.2D;
-            chartArea5.AxisY.Maximum = 5000D;
-            chartArea5.AxisY.Title = "Sensor output (mV)";
-            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.Name = "ChartArea1";
-            this.chartSensor.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartSensor.Legends.Add(legend5);
+            chartArea4.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
+            chartArea4.AxisX.Interval = 60D;
+            chartArea4.AxisX.MajorGrid.Enabled = false;
+            chartArea4.AxisX.MajorGrid.Interval = 1D;
+            chartArea4.AxisX.MajorTickMark.Interval = 30D;
+            chartArea4.AxisX.Maximum = 300D;
+            chartArea4.AxisX.Minimum = 0D;
+            chartArea4.AxisX.MinorTickMark.Interval = 50D;
+            chartArea4.AxisX.ScrollBar.BackColor = System.Drawing.Color.Silver;
+            chartArea4.AxisX.Title = "Time (s)";
+            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.Interval = 1000D;
+            chartArea4.AxisY.MajorGrid.Interval = 500D;
+            chartArea4.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea4.AxisY.MajorTickMark.Enabled = false;
+            chartArea4.AxisY.MajorTickMark.Interval = 0.2D;
+            chartArea4.AxisY.Maximum = 5000D;
+            chartArea4.AxisY.Title = "Sensor output (mV)";
+            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.Name = "ChartArea1";
+            this.chartSensor.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartSensor.Legends.Add(legend4);
             this.chartSensor.Location = new System.Drawing.Point(228, 38);
             this.chartSensor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartSensor.Name = "chartSensor";
             this.chartSensor.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series17.ChartArea = "ChartArea1";
-            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series17.Color = System.Drawing.Color.Red;
-            series17.Legend = "Legend1";
-            series17.Name = "sensor1";
-            series17.Points.Add(dataPoint17);
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series18.Color = System.Drawing.Color.Blue;
-            series18.Legend = "Legend1";
-            series18.Name = "sensor2";
-            series18.Points.Add(dataPoint18);
-            series19.BorderWidth = 2;
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series19.Color = System.Drawing.Color.Gold;
-            series19.Legend = "Legend1";
-            series19.Name = "sensor3";
-            series19.Points.Add(dataPoint19);
-            series20.BorderWidth = 2;
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series20.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series20.Legend = "Legend1";
-            series20.Name = "sensor4";
-            series20.Points.Add(dataPoint20);
-            this.chartSensor.Series.Add(series17);
-            this.chartSensor.Series.Add(series18);
-            this.chartSensor.Series.Add(series19);
-            this.chartSensor.Series.Add(series20);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series13.Color = System.Drawing.Color.Red;
+            series13.Legend = "Legend1";
+            series13.Name = "sensor1";
+            series13.Points.Add(dataPoint13);
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series14.Color = System.Drawing.Color.Blue;
+            series14.Legend = "Legend1";
+            series14.Name = "sensor2";
+            series14.Points.Add(dataPoint14);
+            series15.BorderWidth = 2;
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series15.Color = System.Drawing.Color.Gold;
+            series15.Legend = "Legend1";
+            series15.Name = "sensor3";
+            series15.Points.Add(dataPoint15);
+            series16.BorderWidth = 2;
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series16.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series16.Legend = "Legend1";
+            series16.Name = "sensor4";
+            series16.Points.Add(dataPoint16);
+            this.chartSensor.Series.Add(series13);
+            this.chartSensor.Series.Add(series14);
+            this.chartSensor.Series.Add(series15);
+            this.chartSensor.Series.Add(series16);
             this.chartSensor.Size = new System.Drawing.Size(1211, 473);
             this.chartSensor.TabIndex = 0;
             this.chartSensor.Text = "Sensor";
@@ -149,29 +139,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opções";
             // 
-            // btnConectar
-            // 
-            this.btnConectar.Location = new System.Drawing.Point(16, 65);
-            this.btnConectar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnConectar.Name = "btnConectar";
-            this.btnConectar.Size = new System.Drawing.Size(139, 31);
-            this.btnConectar.TabIndex = 3;
-            this.btnConectar.Text = "Ativar Sensores";
-            this.btnConectar.UseVisualStyleBackColor = true;
-            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
-            // 
-            // btnTest
-            // 
-            this.btnTest.Enabled = false;
-            this.btnTest.Location = new System.Drawing.Point(16, 109);
-            this.btnTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(139, 26);
-            this.btnTest.TabIndex = 2;
-            this.btnTest.Text = "Identificar Aroma";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
             // txtPorta
             // 
             this.txtPorta.Location = new System.Drawing.Point(102, 29);
@@ -185,6 +152,17 @@
             0,
             0});
             // 
+            // btnConectar
+            // 
+            this.btnConectar.Location = new System.Drawing.Point(16, 65);
+            this.btnConectar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConectar.Name = "btnConectar";
+            this.btnConectar.Size = new System.Drawing.Size(139, 31);
+            this.btnConectar.TabIndex = 3;
+            this.btnConectar.Text = "Ativar Sensores";
+            this.btnConectar.UseVisualStyleBackColor = true;
+            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -195,142 +173,21 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Porta serial:";
             // 
-            // lblSensor1
+            // btnTest
             // 
-            this.lblSensor1.AutoSize = true;
-            this.lblSensor1.Location = new System.Drawing.Point(4, 31);
-            this.lblSensor1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSensor1.Name = "lblSensor1";
-            this.lblSensor1.Size = new System.Drawing.Size(81, 17);
-            this.lblSensor1.TabIndex = 5;
-            this.lblSensor1.Text = "Sem Dados";
+            this.btnTest.Location = new System.Drawing.Point(16, 109);
+            this.btnTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(139, 26);
+            this.btnTest.TabIndex = 2;
+            this.btnTest.Text = "Identificar Aroma";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // updateChart
             // 
             this.updateChart.Interval = 500;
             this.updateChart.Tick += new System.EventHandler(this.updateChart_Tick);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.lblSensor5, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblSensor4, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblSensor3, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblSensor2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblSensor1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(228, 517);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.68293F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.31707F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1211, 73);
-            this.tableLayoutPanel1.TabIndex = 6;
-            // 
-            // lblSensor5
-            // 
-            this.lblSensor5.AutoSize = true;
-            this.lblSensor5.Location = new System.Drawing.Point(972, 31);
-            this.lblSensor5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSensor5.Name = "lblSensor5";
-            this.lblSensor5.Size = new System.Drawing.Size(81, 17);
-            this.lblSensor5.TabIndex = 15;
-            this.lblSensor5.Text = "Sem Dados";
-            // 
-            // lblSensor4
-            // 
-            this.lblSensor4.AutoSize = true;
-            this.lblSensor4.Location = new System.Drawing.Point(730, 31);
-            this.lblSensor4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSensor4.Name = "lblSensor4";
-            this.lblSensor4.Size = new System.Drawing.Size(81, 17);
-            this.lblSensor4.TabIndex = 14;
-            this.lblSensor4.Text = "Sem Dados";
-            // 
-            // lblSensor3
-            // 
-            this.lblSensor3.AutoSize = true;
-            this.lblSensor3.Location = new System.Drawing.Point(488, 31);
-            this.lblSensor3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSensor3.Name = "lblSensor3";
-            this.lblSensor3.Size = new System.Drawing.Size(79, 17);
-            this.lblSensor3.TabIndex = 13;
-            this.lblSensor3.Text = "Sem dados";
-            // 
-            // lblSensor2
-            // 
-            this.lblSensor2.AutoSize = true;
-            this.lblSensor2.Location = new System.Drawing.Point(246, 31);
-            this.lblSensor2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSensor2.Name = "lblSensor2";
-            this.lblSensor2.Size = new System.Drawing.Size(81, 17);
-            this.lblSensor2.TabIndex = 12;
-            this.lblSensor2.Text = "Sem Dados";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(972, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 18);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Sensor 5:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(730, 0);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 18);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Sensor 4:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(488, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 18);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Sensor 3:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(246, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 18);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Sensor 2:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 18);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Sensor 1:";
             // 
             // menuStrip1
             // 
@@ -354,7 +211,7 @@
             // btnCriarRede
             // 
             this.btnCriarRede.Name = "btnCriarRede";
-            this.btnCriarRede.Size = new System.Drawing.Size(181, 26);
+            this.btnCriarRede.Size = new System.Drawing.Size(115, 26);
             this.btnCriarRede.Text = "Criar";
             this.btnCriarRede.Click += new System.EventHandler(this.btnCriarRede_Click);
             // 
@@ -381,7 +238,6 @@
             // 
             // btnSalvarTreinamento
             // 
-            this.btnSalvarTreinamento.Enabled = false;
             this.btnSalvarTreinamento.Location = new System.Drawing.Point(16, 49);
             this.btnSalvarTreinamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvarTreinamento.Name = "btnSalvarTreinamento";
@@ -391,13 +247,33 @@
             this.btnSalvarTreinamento.UseVisualStyleBackColor = true;
             this.btnSalvarTreinamento.Click += new System.EventHandler(this.btnSalvarTreinamento_Click_1);
             // 
-            // Form1
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 489);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(135, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Pontos capturados: ";
+            // 
+            // lblPointCount
+            // 
+            this.lblPointCount.AutoSize = true;
+            this.lblPointCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPointCount.Location = new System.Drawing.Point(154, 489);
+            this.lblPointCount.Name = "lblPointCount";
+            this.lblPointCount.Size = new System.Drawing.Size(19, 20);
+            this.lblPointCount.TabIndex = 10;
+            this.lblPointCount.Text = "0";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1456, 613);
+            this.ClientSize = new System.Drawing.Size(1456, 529);
+            this.Controls.Add(this.lblPointCount);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chartSensor);
             this.Controls.Add(this.menuStrip1);
@@ -405,7 +281,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Odor Detection";
@@ -415,8 +291,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPorta)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -432,25 +306,16 @@
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Button btnConectar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblSensor1;
         private System.Windows.Forms.Timer updateChart;
         private System.Windows.Forms.NumericUpDown txtPorta;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lblSensor5;
-        private System.Windows.Forms.Label lblSensor4;
-        private System.Windows.Forms.Label lblSensor3;
-        private System.Windows.Forms.Label lblSensor2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem treinamentoToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cmbTiposGas;
         private System.Windows.Forms.Button btnSalvarTreinamento;
         private System.Windows.Forms.ToolStripMenuItem btnCriarRede;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPointCount;
     }
 }
 

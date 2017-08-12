@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using Encog;
 using Encog.ML;
 using Encog.ML.Data;
@@ -44,8 +43,9 @@ namespace OdorDetector
             Console.WriteLine(@"Final model: " + trainingMethod);
         }
 
-        public string test(string[] inputData)
+        public string detect(string[] inputData)
         {
+            //Normaliza dados
             NormalizationHelper helper = model.Dataset.NormHelper;
             IMLData normilizedInput = helper.AllocateInputVector();
             helper.NormalizeInputVector(inputData, ((BasicMLData)normilizedInput).Data, false);

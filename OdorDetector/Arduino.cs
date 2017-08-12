@@ -11,7 +11,7 @@ namespace OdorDetector
     {
         public SerialPort serialPort = new SerialPort();
         private Thread readThread = null;
-        public string sensorVoltage;
+        public string[] sensorVoltage;
 
         public void connect(string port)
         {
@@ -29,9 +29,9 @@ namespace OdorDetector
                 try
                 {
                     if (serialPort.BytesToRead > 0)
-                        sensorVoltage = serialPort.ReadLine();
+                        sensorVoltage = serialPort.ReadLine().Split(',');
                 }
-                catch (TimeoutException ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }

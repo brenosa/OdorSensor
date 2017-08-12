@@ -11,7 +11,8 @@ namespace OdorDetector
         NeuralNetwork neuralNetwork = new NeuralNetwork();
         Arduino arduino = new Arduino();
         double x = 0;
-       
+        int numberOfSensors = 1;
+        int pointsCount = 0;
         String inputLocation = @"input.csv";
 
         public MainForm()
@@ -27,10 +28,9 @@ namespace OdorDetector
             {
                 try
                 {
-                    disableControls();
                     clearChartSeries();
                     arduino.connect("COM" + txtPorta.Text);
-                    updateChart.Start();
+                    updateChart.Start();                   
                     btnConectar.Text = "Parar Captura";
                 }
                 catch
@@ -51,14 +51,11 @@ namespace OdorDetector
         private void updateChart_Tick(object sender, EventArgs e)
         {
             x += 0.5;
-            chartSensor.Series[0].Points.AddXY(x, arduino.sensorVoltage);
-            lblSensor1.Text = arduino.sensorVoltage.Replace('\r', ' ') + "mV";
-
-            if (chartSensor.Series[0].Points.Count >= 200)
+            for (int i = 0; i < numberOfSensors; i++)
             {
-                btnSalvarTreinamento.Enabled = true;
-                btnTest.Enabled = true;
+                chartSensor.Series[i].Points.AddXY(x, arduino.sensorVoltage[i]);
             }
+            lblPointCount.Text = (++pointsCount).ToString();
         }
 
         private string[] getChartPoints()
@@ -67,9 +64,9 @@ namespace OdorDetector
             if (chartSensor.Series[0].Points.Count >= 200)
             {
                 //Y values
-                for (int i = 0; i < 1; i++)//sensors
+                for (int i = 0; i < numberOfSensors; i++)//sensors
                 {
-                    for (int j = 100; j < 200; j++)//points                         
+                    for (int j = 50; j < 150; j++)//points                         
                     {
                         rows.Add(chartSensor.Series[i].Points[j].YValues[0].ToString());
                     }
@@ -82,9 +79,12 @@ namespace OdorDetector
 
         private void clearChartSeries()
         {
-            chartSensor.Series[0].Points.Clear();
-            chartSensor.Series[1].Points.Clear();
+            for (int i = 0; i < numberOfSensors; i++)
+            {
+                chartSensor.Series[i].Points.Clear();
+            }           
             x = 0;
+            pointsCount = 0;
         }
 
         //*******************************NEURAL NETWORK***************************************
@@ -110,10 +110,10 @@ namespace OdorDetector
             cachorro,1.0,1.0,3.0
             peixe,3.0,2.0,1.0*/
 
-            string[] teste = { "1.0", "2.0", "3.1" };
+            string[] teste = { "1.0", "2.0", "2.9" };
             try
             {
-                MessageBox.Show("Detectado: " + neuralNetwork.test(teste));
+                MessageBox.Show("Detectado: " + neuralNetwork.detect(teste));
             }
             catch (Exception ex)
             {
@@ -163,12 +163,6 @@ namespace OdorDetector
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void disableControls()
-        {
-            btnTest.Enabled = false;
-            btnSalvarTreinamento.Enabled = false;
-        }
+        }             
     }
 }
