@@ -27,18 +27,19 @@ float readSensor(uint8_t input){
 }
 
 void loop()
-{
+{  
   // Le os dados do pino analogico do sensor
   readSensor(A0);
   //delay(100);
   readSensor(A1);
   //delay(100);
-  readSensor(A2);
+  //readSensor(A2);
   //delay(100);
-  readSensor(A3);
+  //readSensor(A3);
   //delay(100);
-  readSensor(A4);
+  //readSensor(A4);
   //delay(100);
-  readSensor(A5);  
+  //readSensor(A5);    
   delay(500);
+  Serial.println();
 }

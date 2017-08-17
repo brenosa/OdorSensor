@@ -11,8 +11,9 @@ namespace OdorDetector
         NeuralNetwork neuralNetwork = new NeuralNetwork();
         Arduino arduino = new Arduino();
         double x = 0;
-        int numberOfSensors = 1;
-        int pointsCount = 0;
+        static int _numberOfSensors = 2;
+        int _pointsCount = 0;
+        static int _numberOfPoints = _numberOfSensors * 100;
         String inputLocation = @"input.csv";
 
         public MainForm()
@@ -51,40 +52,35 @@ namespace OdorDetector
         private void updateChart_Tick(object sender, EventArgs e)
         {
             x += 0.5;
-            for (int i = 0; i < numberOfSensors; i++)
+            for (int i = 0; i < _numberOfSensors; i++)
             {
                 chartSensor.Series[i].Points.AddXY(x, arduino.sensorVoltage[i]);
             }
-            lblPointCount.Text = (++pointsCount).ToString();
+            lblPointCount.Text = (++_pointsCount).ToString();
         }
 
         private string[] getChartPoints()
         {
-            var rows = new List<string>();
-            if (chartSensor.Series[0].Points.Count >= 200)
+            var rows = new List<string>();            
+            //Y values
+            for (int i = 0; i < _numberOfSensors; i++)//sensors
             {
-                //Y values
-                for (int i = 0; i < numberOfSensors; i++)//sensors
+                for (int j = 0; j < chartSensor.Series[i].Points.Count; j++)//points                         
                 {
-                    for (int j = 50; j < 150; j++)//points                         
-                    {
-                        rows.Add(chartSensor.Series[i].Points[j].YValues[0].ToString());
-                    }
+                    rows.Add(chartSensor.Series[i].Points[j].YValues[0].ToString());
                 }
-            }
-            else
-                MessageBox.Show("Sem dados suficientes.");
+            } 
             return rows.ToArray();
         }
 
         private void clearChartSeries()
         {
-            for (int i = 0; i < numberOfSensors; i++)
+            for (int i = 0; i < _numberOfSensors; i++)
             {
                 chartSensor.Series[i].Points.Clear();
             }           
             x = 0;
-            pointsCount = 0;
+            _pointsCount = 0;
         }
 
         //*******************************NEURAL NETWORK***************************************
@@ -126,15 +122,25 @@ namespace OdorDetector
             //input
             using (StreamWriter file = new StreamWriter(inputLocation, true))
             {
-                file.Write(cmbTiposGas.Text);
+                
                 string[] chartPoints = getChartPoints();
-                foreach (var point in chartPoints)
+                if(chartPoints.Length >= _numberOfPoints)
                 {
-                    file.Write("," + point);
-                }                
-                file.WriteLine();
+                    file.Write(cmbTiposGas.Text);
+                    for (int i = 50; i < _numberOfPoints; i++) //skip first points
+                    {
+                        file.Write("," + chartPoints[i]);
+                    }                
+                    file.WriteLine();
+                    MessageBox.Show("Salvo");
+                }
+                else
+                {
+                    MessageBox.Show("Sem dados suficientes.");
+                }
+                
             }          
-            MessageBox.Show("Salvo");
+            
         }
 
         //*************************************************************************

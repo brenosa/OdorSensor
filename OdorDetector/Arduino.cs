@@ -12,6 +12,7 @@ namespace OdorDetector
         public SerialPort serialPort = new SerialPort();
         private Thread readThread = null;
         public string[] sensorVoltage;
+        protected ManualResetEvent threadStop = new ManualResetEvent(false);
 
         public void connect(string port)
         {
@@ -24,40 +25,44 @@ namespace OdorDetector
 
         public void startRead()
         {
-            while (serialPort.IsOpen)
+            try
             {
-                try
+                threadStop.Reset();
+                while (serialPort.IsOpen)
                 {
-                    if (serialPort.BytesToRead > 0)
-                        sensorVoltage = serialPort.ReadLine().Split(',');
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                    try
+                    {
+                        if (serialPort.BytesToRead > 0)
+                            sensorVoltage = serialPort.ReadLine().Split(',');
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    if (threadStop.WaitOne(0))
+                    {
+                        if (serialPort != null)
+                            serialPort.Close();
+                        break;
+                    }
+                        
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (serialPort != null)
+                    serialPort.Close();
+            }
+
         }
 
         public void stopRead()
-        {
-            try
-            {
-                if (!(readThread == null))
-                    readThread.Abort();
-            }
-            catch (NullReferenceException)
-            {
-                throw new NullReferenceException();
-            }
-
-            try
-            {
-                serialPort.Close();
-            }
-            catch (NullReferenceException)
-            {
-                throw new NullReferenceException();
-            }
+        {           
+            threadStop.Set();                  
         }
     }
 }
