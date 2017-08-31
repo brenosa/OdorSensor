@@ -11,10 +11,15 @@ namespace OdorDetector
         NeuralNetwork neuralNetwork = new NeuralNetwork();
         Arduino arduino = new Arduino();
         double x = 0;
-        static int _numberOfSensors = 2;
+        static int _numberOfSensors = 4;
         int _pointsCount = 0;
         static int _numberOfPoints = _numberOfSensors * 100;
         String inputLocation = @"input.csv";
+
+        /*  sensor 1 - mq135 - Air Quality Control(NH3, Benzene, Alcohol, smoke)
+            sensor 2 - mq3 - Alcohol
+            sensor 3 - mq8 - Hydrogen
+            sensor 4 - mq9 - CO and Combustible gas*/
 
         public MainForm()
         {
@@ -52,6 +57,7 @@ namespace OdorDetector
         private void updateChart_Tick(object sender, EventArgs e)
         {
             x += 0.5;
+           
             for (int i = 0; i < _numberOfSensors; i++)
             {
                 chartSensor.Series[i].Points.AddXY(x, arduino.sensorVoltage[i]);

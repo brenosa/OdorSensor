@@ -33,9 +33,9 @@ void loop()
   //delay(100);
   readSensor(A1);
   //delay(100);
-  //readSensor(A2);
+  readSensor(A2);
   //delay(100);
-  //readSensor(A3);
+  readSensor(A3);
   //delay(100);
   //readSensor(A4);
   //delay(100);
