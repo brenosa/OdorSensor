@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             this.chartSensor = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPorta = new System.Windows.Forms.NumericUpDown();
@@ -49,19 +49,19 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.treinamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCriarRede = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCarregarRede = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSalvarRede = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblPontoSalvos = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numberMax = new System.Windows.Forms.NumericUpDown();
+            this.numberMin = new System.Windows.Forms.NumericUpDown();
             this.cmbTiposGas = new System.Windows.Forms.ComboBox();
             this.btnSalvarTreinamento = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblPointCount = new System.Windows.Forms.Label();
-            this.numberMin = new System.Windows.Forms.NumericUpDown();
-            this.numberMax = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblPontoSalvos = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnCarregarRede = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSalvarRede = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.chartSensor)).BeginInit();
@@ -69,8 +69,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPorta)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numberMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberMin)).BeginInit();
             this.SuspendLayout();
             // 
             // chartSensor
@@ -78,64 +78,64 @@
             this.chartSensor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.MajorGrid.Interval = 1D;
-            chartArea1.AxisX.MajorTickMark.Interval = 30D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.MinorTickMark.Interval = 50D;
-            chartArea1.AxisX.ScaleView.SmallScrollSizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisX.ScrollBar.BackColor = System.Drawing.Color.Silver;
-            chartArea1.AxisX.Title = "Time (s)";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.Interval = 1000D;
-            chartArea1.AxisY.MajorGrid.Interval = 500D;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.MajorTickMark.Enabled = false;
-            chartArea1.AxisY.MajorTickMark.Interval = 0.2D;
-            chartArea1.AxisY.Maximum = 5000D;
-            chartArea1.AxisY.Title = "Sensor output (mV)";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.CursorX.IsUserEnabled = true;
-            chartArea1.CursorX.IsUserSelectionEnabled = true;
-            chartArea1.Name = "ChartArea1";
-            this.chartSensor.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartSensor.Legends.Add(legend1);
+            chartArea3.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisX.MajorGrid.Interval = 1D;
+            chartArea3.AxisX.MajorTickMark.Interval = 30D;
+            chartArea3.AxisX.Minimum = 0D;
+            chartArea3.AxisX.MinorTickMark.Interval = 50D;
+            chartArea3.AxisX.ScaleView.SmallScrollSizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea3.AxisX.ScrollBar.BackColor = System.Drawing.Color.Silver;
+            chartArea3.AxisX.Title = "Time (s)";
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.Interval = 1000D;
+            chartArea3.AxisY.MajorGrid.Interval = 500D;
+            chartArea3.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea3.AxisY.MajorTickMark.Enabled = false;
+            chartArea3.AxisY.MajorTickMark.Interval = 0.2D;
+            chartArea3.AxisY.Maximum = 5000D;
+            chartArea3.AxisY.Title = "Sensor output (mV)";
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.CursorX.IsUserEnabled = true;
+            chartArea3.CursorX.IsUserSelectionEnabled = true;
+            chartArea3.Name = "ChartArea1";
+            this.chartSensor.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartSensor.Legends.Add(legend3);
             this.chartSensor.Location = new System.Drawing.Point(171, 31);
             this.chartSensor.Margin = new System.Windows.Forms.Padding(2);
             this.chartSensor.Name = "chartSensor";
             this.chartSensor.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.Red;
-            series1.Legend = "Legend1";
-            series1.Name = "Amonia, Benzeno e Alcool";
-            series1.Points.Add(dataPoint1);
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Color = System.Drawing.Color.Blue;
-            series2.Legend = "Legend1";
-            series2.Name = "Alcool";
-            series2.Points.Add(dataPoint2);
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Color = System.Drawing.Color.Gold;
-            series3.Legend = "Legend1";
-            series3.Name = "Hidrogenio";
-            series3.Points.Add(dataPoint3);
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series4.Legend = "Legend1";
-            series4.Name = "Gas Carbonico";
-            series4.Points.Add(dataPoint4);
-            this.chartSensor.Series.Add(series1);
-            this.chartSensor.Series.Add(series2);
-            this.chartSensor.Series.Add(series3);
-            this.chartSensor.Series.Add(series4);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Color = System.Drawing.Color.Red;
+            series9.Legend = "Legend1";
+            series9.Name = "Amonia, Benzeno e Alcool";
+            series9.Points.Add(dataPoint9);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series10.Color = System.Drawing.Color.Blue;
+            series10.Legend = "Legend1";
+            series10.Name = "Alcool";
+            series10.Points.Add(dataPoint10);
+            series11.BorderWidth = 2;
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series11.Color = System.Drawing.Color.Gold;
+            series11.Legend = "Legend1";
+            series11.Name = "Hidrogenio";
+            series11.Points.Add(dataPoint11);
+            series12.BorderWidth = 2;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series12.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series12.Legend = "Legend1";
+            series12.Name = "Gas Carbonico";
+            series12.Points.Add(dataPoint12);
+            this.chartSensor.Series.Add(series9);
+            this.chartSensor.Series.Add(series10);
+            this.chartSensor.Series.Add(series11);
+            this.chartSensor.Series.Add(series12);
             this.chartSensor.Size = new System.Drawing.Size(908, 384);
             this.chartSensor.TabIndex = 0;
             this.chartSensor.Text = "Sensor";
@@ -227,9 +227,23 @@
             // btnCriarRede
             // 
             this.btnCriarRede.Name = "btnCriarRede";
-            this.btnCriarRede.Size = new System.Drawing.Size(152, 22);
+            this.btnCriarRede.Size = new System.Drawing.Size(119, 22);
             this.btnCriarRede.Text = "Criar";
             this.btnCriarRede.Click += new System.EventHandler(this.btnCriarRede_Click);
+            // 
+            // btnCarregarRede
+            // 
+            this.btnCarregarRede.Name = "btnCarregarRede";
+            this.btnCarregarRede.Size = new System.Drawing.Size(119, 22);
+            this.btnCarregarRede.Text = "Carregar";
+            this.btnCarregarRede.Click += new System.EventHandler(this.btnCarregarRede_Click_1);
+            // 
+            // btnSalvarRede
+            // 
+            this.btnSalvarRede.Name = "btnSalvarRede";
+            this.btnSalvarRede.Size = new System.Drawing.Size(119, 22);
+            this.btnSalvarRede.Text = "Salvar";
+            this.btnSalvarRede.Click += new System.EventHandler(this.btnSalvarRede_Click_1);
             // 
             // groupBox2
             // 
@@ -249,6 +263,83 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Treinamento";
+            // 
+            // lblPontoSalvos
+            // 
+            this.lblPontoSalvos.AutoSize = true;
+            this.lblPontoSalvos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPontoSalvos.Location = new System.Drawing.Point(89, 140);
+            this.lblPontoSalvos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPontoSalvos.Name = "lblPontoSalvos";
+            this.lblPontoSalvos.Size = new System.Drawing.Size(35, 17);
+            this.lblPontoSalvos.TabIndex = 14;
+            this.lblPontoSalvos.Text = "200";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 142);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Pontos salvos: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 88);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Até: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 44);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "De: ";
+            // 
+            // numberMax
+            // 
+            this.numberMax.Location = new System.Drawing.Point(14, 107);
+            this.numberMax.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numberMax.Name = "numberMax";
+            this.numberMax.Size = new System.Drawing.Size(102, 20);
+            this.numberMax.TabIndex = 5;
+            this.numberMax.Value = new decimal(new int[] {
+            51,
+            0,
+            0,
+            0});
+            this.numberMax.ValueChanged += new System.EventHandler(this.numberMax_ValueChanged);
+            // 
+            // numberMin
+            // 
+            this.numberMin.Location = new System.Drawing.Point(13, 62);
+            this.numberMin.Maximum = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.numberMin.Name = "numberMin";
+            this.numberMin.Size = new System.Drawing.Size(104, 20);
+            this.numberMin.TabIndex = 4;
+            this.numberMin.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numberMin.ValueChanged += new System.EventHandler(this.numberMin_ValueChanged);
             // 
             // cmbTiposGas
             // 
@@ -291,97 +382,6 @@
             this.lblPointCount.TabIndex = 10;
             this.lblPointCount.Text = "0";
             // 
-            // numberMin
-            // 
-            this.numberMin.Location = new System.Drawing.Point(13, 62);
-            this.numberMin.Maximum = new decimal(new int[] {
-            2500,
-            0,
-            0,
-            0});
-            this.numberMin.Name = "numberMin";
-            this.numberMin.Size = new System.Drawing.Size(104, 20);
-            this.numberMin.TabIndex = 4;
-            this.numberMin.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numberMin.ValueChanged += new System.EventHandler(this.numberMin_ValueChanged);
-            // 
-            // numberMax
-            // 
-            this.numberMax.Location = new System.Drawing.Point(14, 107);
-            this.numberMax.Maximum = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            this.numberMax.Name = "numberMax";
-            this.numberMax.Size = new System.Drawing.Size(102, 20);
-            this.numberMax.TabIndex = 5;
-            this.numberMax.Value = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.numberMax.ValueChanged += new System.EventHandler(this.numberMax_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 44);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "De: ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 88);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Até: ";
-            // 
-            // lblPontoSalvos
-            // 
-            this.lblPontoSalvos.AutoSize = true;
-            this.lblPontoSalvos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPontoSalvos.Location = new System.Drawing.Point(89, 140);
-            this.lblPontoSalvos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPontoSalvos.Name = "lblPontoSalvos";
-            this.lblPontoSalvos.Size = new System.Drawing.Size(35, 17);
-            this.lblPontoSalvos.TabIndex = 14;
-            this.lblPontoSalvos.Text = "200";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 142);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Pontos salvos: ";
-            // 
-            // btnCarregarRede
-            // 
-            this.btnCarregarRede.Name = "btnCarregarRede";
-            this.btnCarregarRede.Size = new System.Drawing.Size(152, 22);
-            this.btnCarregarRede.Text = "Carregar";
-            this.btnCarregarRede.Click += new System.EventHandler(this.btnCarregarRede_Click_1);
-            // 
-            // btnSalvarRede
-            // 
-            this.btnSalvarRede.Name = "btnSalvarRede";
-            this.btnSalvarRede.Size = new System.Drawing.Size(152, 22);
-            this.btnSalvarRede.Text = "Salvar";
-            this.btnSalvarRede.Click += new System.EventHandler(this.btnSalvarRede_Click_1);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -414,8 +414,8 @@
             this.menuStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numberMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberMin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

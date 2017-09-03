@@ -32,16 +32,17 @@ namespace OdorDetector
         public void train()
         {
             // Hold back some data for a final validation.
-            model.HoldBackValidation(0.3, true, 1001);
+            model.HoldBackValidation(0.1, true, 1001);
             // Choose whatever is the default training type for this model.
             model.SelectTrainingType(normilizedInput);
             // Use a 5-fold cross-validated train.  Return the best method found.            
             trainingMethod = (IMLRegression)model.Crossvalidate(5, true);
 
             // Display the training and validation errors.
-            Console.WriteLine(@"Training error: " + model.CalculateError(trainingMethod, model.TrainingDataset));
-            Console.WriteLine(@"Validation error: " + model.CalculateError(trainingMethod, model.ValidationDataset));
-            Console.WriteLine(@"Final model: " + trainingMethod);
+            System.Windows.Forms.MessageBox.Show("Training error: " + 
+                model.CalculateError(trainingMethod, model.TrainingDataset) +
+                "\r\nValidation error: " + model.CalculateError(trainingMethod, model.ValidationDataset)+
+                "\r\nFinal model: " + trainingMethod);            
         }
 
         public string detect(string[] inputData)
@@ -86,8 +87,8 @@ namespace OdorDetector
 
         public void save(string location)
         {
-            FileInfo networkFile = new FileInfo(location);
-            Encog.Persist.EncogDirectoryPersistence.SaveObject(networkFile, model);
+            //FileInfo networkFile = new FileInfo(location);
+            Encog.Persist.EncogDirectoryPersistence.SaveObject(File.Create(location), (EncogModel) model);
         }
 
         public void load(string filePath)

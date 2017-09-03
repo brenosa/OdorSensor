@@ -36,6 +36,7 @@ namespace OdorDetector
                 {
                     clearChartSeries();
                     arduino.connect("COM" + txtPorta.Text);
+                    System.Threading.Thread.Sleep(1000);
                     updateChart.Start();                   
                     btnConectar.Text = "Parar Captura";
                 }
@@ -65,17 +66,20 @@ namespace OdorDetector
             lblPointCount.Text = (++_pointsCount/2).ToString();
         }
 
-        private string[] getChartPoints()
+        private string[] getChartPoints(int minRange, int maxRange)
         {
-            var rows = new List<string>();            
-            //Y values
-            for (int i = 0; i < _numberOfSensors; i++)//sensors
-            {
-                for (int j = 0; j < chartSensor.Series[i].Points.Count; j++)//points                         
-                {
-                    rows.Add(chartSensor.Series[i].Points[j].YValues[0].ToString());
+            var rows = new List<string>();
+            if (chartSensor.Series[0].Points.Count > maxRange)
+            { 
+                //Y values
+                for (int i = 0; i < _numberOfSensors; i++)//sensors
+                {                    
+                    for (int j = minRange; j < maxRange; j++)//points                         
+                    {
+                        rows.Add(((int)chartSensor.Series[i].Points[j].YValues[0]).ToString());
+                    }
                 }
-            } 
+            }            
             return rows.ToArray();
         }
 
@@ -96,8 +100,7 @@ namespace OdorDetector
             try
             {
                 neuralNetwork.create();
-                neuralNetwork.train();
-                MessageBox.Show("Rede Criada");
+                neuralNetwork.train();              
             }
             catch (Exception ex)
             {
@@ -113,7 +116,9 @@ namespace OdorDetector
             peixe,3.0,2.0,1.0*/
 
             //string[] chartPoints = { "1.0", "2.0", "2.9" };
-            string[] chartPoints = getChartPoints();
+            int minLimit = (int)numberMin.Value * 2;
+            int maxLimit = (int)numberMax.Value * 2;
+            string[] chartPoints = getChartPoints(minLimit, maxLimit);
             /*for (int i = 0; i < maxLimit; i++) //skip first points
             {
                 file.Write("," + chartPoints[i]);
@@ -130,28 +135,29 @@ namespace OdorDetector
 
         private void btnSalvarTreinamento_Click_1(object sender, EventArgs e)
         {
-            int minLimit = _numberOfSensors * (int)numberMin.Value * 2;
-            int maxLimit = _numberOfSensors * (int)numberMax.Value * 2;
+            int minLimit = (int)numberMin.Value * 2;
+            int maxLimit = (int)numberMax.Value * 2;
             //input
             using (StreamWriter file = new StreamWriter(inputLocation, true))
             {
-                
-                string[] chartPoints = getChartPoints();
-                if(chartPoints.Length >= maxLimit)
-                {
+                string[] chartPoints = getChartPoints(minLimit, maxLimit);
+                if (chartPoints.Length > 0)
+                { 
                     file.Write(cmbTiposGas.Text);
-                    for (int i = minLimit; i < maxLimit; i++) //skip first points
+                    for (int i = 0; i < chartPoints.Length; i++)
                     {
                         file.Write("," + chartPoints[i]);
                     }                
                     file.WriteLine();
                     MessageBox.Show("Salvo");
+                    numberMin.Value = numberMax.Value;
+                    numberMax.Value = numberMax.Value + 50;
                 }
                 else
                 {
                     MessageBox.Show("Sem dados suficientes.");
                 }                
-            } 
+            }            
         }
 
         private void btnCarregarRede_Click_1(object sender, EventArgs e)

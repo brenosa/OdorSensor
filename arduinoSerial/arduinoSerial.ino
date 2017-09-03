@@ -14,12 +14,12 @@ void setup()
 
 float readSensor(uint8_t input){
   float sensorValue = 0;
-  //Tira media de 100 amostras
-  for(int x = 0 ; x < 100 ; x++)
+  //Tira media de 10 amostras
+  for(int x = 0 ; x < 20 ; x++)
   {
     sensorValue = sensorValue + analogRead(input);
   }
-  sensorValue /= 100.0;
+  sensorValue /= 20.0;
   //Normaliza valor para intervalo entre 0 e 5000(mV)
   sensorValue *= (5000.0/1023.0); 
   Serial.print(sensorValue);  
@@ -35,11 +35,7 @@ void loop()
   //delay(100);
   readSensor(A2);
   //delay(100);
-  readSensor(A3);
-  //delay(100);
-  //readSensor(A4);
-  //delay(100);
-  //readSensor(A5);    
+  readSensor(A3);   
   delay(500);
   Serial.println();
 }
