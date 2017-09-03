@@ -9,6 +9,7 @@ using Encog.ML.Data.Versatile;
 using Encog.ML.Data.Versatile.Sources;
 using Encog.ML.Data.Versatile.Columns;
 using Encog.Util.CSV;
+using System.IO;
 
 namespace OdorDetector
 {
@@ -31,7 +32,7 @@ namespace OdorDetector
         public void train()
         {
             // Hold back some data for a final validation.
-            model.HoldBackValidation(0.3, false, 1001);
+            model.HoldBackValidation(0.3, true, 1001);
             // Choose whatever is the default training type for this model.
             model.SelectTrainingType(normilizedInput);
             // Use a 5-fold cross-validated train.  Return the best method found.            
@@ -53,11 +54,11 @@ namespace OdorDetector
             Console.WriteLine(@"Neural Network Results:");
            
             IMLData output = trainingMethod.Compute(normilizedInput);
-            Console.WriteLine("Input: ");
+            /*Console.WriteLine("Input: ");
             for (int i = 0; i < inputData.Length; i++)
             {
                 Console.WriteLine(inputData[i]);
-            }
+            }*/
             Console.WriteLine("Output = " + output[0]);
             EncogFramework.Instance.Shutdown();
 
@@ -80,6 +81,21 @@ namespace OdorDetector
             data.Analyze();
             data.DefineSingleOutputOthersInput(outputColumnDefinition);
             return data;
+        }
+
+
+        public void save(string location)
+        {
+            FileInfo networkFile = new FileInfo(location);
+            Encog.Persist.EncogDirectoryPersistence.SaveObject(networkFile, model);
+        }
+
+        public void load(string filePath)
+        {
+            FileInfo networkFile = new FileInfo(filePath);
+            model = (EncogModel)(Encog.Persist.EncogDirectoryPersistence.LoadObject(networkFile));
+            //TODO normilize data??
+            //TODO best method?
         }
     }
 }

@@ -1,4 +1,3 @@
 cerveja
-gato
-papagaio
-elefante
+mato
+ar

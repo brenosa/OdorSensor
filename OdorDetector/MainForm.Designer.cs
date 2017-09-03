@@ -54,11 +54,23 @@
             this.btnSalvarTreinamento = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblPointCount = new System.Windows.Forms.Label();
+            this.numberMin = new System.Windows.Forms.NumericUpDown();
+            this.numberMax = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblPontoSalvos = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnCarregarRede = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSalvarRede = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.chartSensor)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPorta)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numberMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberMax)).BeginInit();
             this.SuspendLayout();
             // 
             // chartSensor
@@ -67,7 +79,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
-            chartArea1.AxisX.Interval = 60D;
             chartArea1.AxisX.MajorGrid.Enabled = false;
             chartArea1.AxisX.MajorGrid.Interval = 1D;
             chartArea1.AxisX.MajorTickMark.Interval = 30D;
@@ -86,6 +97,7 @@
             chartArea1.AxisY.Title = "Sensor output (mV)";
             chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.CursorX.IsUserEnabled = true;
+            chartArea1.CursorX.IsUserSelectionEnabled = true;
             chartArea1.Name = "ChartArea1";
             this.chartSensor.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -98,27 +110,27 @@
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Color = System.Drawing.Color.Red;
             series1.Legend = "Legend1";
-            series1.Name = "sensor1";
+            series1.Name = "Amonia, Benzeno e Alcool";
             series1.Points.Add(dataPoint1);
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Color = System.Drawing.Color.Blue;
             series2.Legend = "Legend1";
-            series2.Name = "sensor2";
+            series2.Name = "Alcool";
             series2.Points.Add(dataPoint2);
             series3.BorderWidth = 2;
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series3.Color = System.Drawing.Color.Gold;
             series3.Legend = "Legend1";
-            series3.Name = "sensor3";
+            series3.Name = "Hidrogenio";
             series3.Points.Add(dataPoint3);
             series4.BorderWidth = 2;
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             series4.Legend = "Legend1";
-            series4.Name = "sensor4";
+            series4.Name = "Gas Carbonico";
             series4.Points.Add(dataPoint4);
             this.chartSensor.Series.Add(series1);
             this.chartSensor.Series.Add(series2);
@@ -205,7 +217,9 @@
             // treinamentoToolStripMenuItem
             // 
             this.treinamentoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCriarRede});
+            this.btnCriarRede,
+            this.btnCarregarRede,
+            this.btnSalvarRede});
             this.treinamentoToolStripMenuItem.Name = "treinamentoToolStripMenuItem";
             this.treinamentoToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.treinamentoToolStripMenuItem.Text = "Rede";
@@ -213,19 +227,25 @@
             // btnCriarRede
             // 
             this.btnCriarRede.Name = "btnCriarRede";
-            this.btnCriarRede.Size = new System.Drawing.Size(99, 22);
+            this.btnCriarRede.Size = new System.Drawing.Size(152, 22);
             this.btnCriarRede.Text = "Criar";
             this.btnCriarRede.Click += new System.EventHandler(this.btnCriarRede_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblPontoSalvos);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.numberMax);
+            this.groupBox2.Controls.Add(this.numberMin);
             this.groupBox2.Controls.Add(this.cmbTiposGas);
             this.groupBox2.Controls.Add(this.btnSalvarTreinamento);
             this.groupBox2.Location = new System.Drawing.Point(20, 161);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(130, 77);
+            this.groupBox2.Size = new System.Drawing.Size(130, 201);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Treinamento";
@@ -241,7 +261,7 @@
             // 
             // btnSalvarTreinamento
             // 
-            this.btnSalvarTreinamento.Location = new System.Drawing.Point(12, 40);
+            this.btnSalvarTreinamento.Location = new System.Drawing.Point(12, 168);
             this.btnSalvarTreinamento.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalvarTreinamento.Name = "btnSalvarTreinamento";
             this.btnSalvarTreinamento.Size = new System.Drawing.Size(104, 21);
@@ -271,6 +291,101 @@
             this.lblPointCount.TabIndex = 10;
             this.lblPointCount.Text = "0";
             // 
+            // numberMin
+            // 
+            this.numberMin.Location = new System.Drawing.Point(13, 62);
+            this.numberMin.Maximum = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.numberMin.Name = "numberMin";
+            this.numberMin.Size = new System.Drawing.Size(104, 20);
+            this.numberMin.TabIndex = 4;
+            this.numberMin.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numberMin.ValueChanged += new System.EventHandler(this.numberMin_ValueChanged);
+            // 
+            // numberMax
+            // 
+            this.numberMax.Location = new System.Drawing.Point(14, 107);
+            this.numberMax.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numberMax.Name = "numberMax";
+            this.numberMax.Size = new System.Drawing.Size(102, 20);
+            this.numberMax.TabIndex = 5;
+            this.numberMax.Value = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.numberMax.ValueChanged += new System.EventHandler(this.numberMax_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 44);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "De: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 88);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Até: ";
+            // 
+            // lblPontoSalvos
+            // 
+            this.lblPontoSalvos.AutoSize = true;
+            this.lblPontoSalvos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPontoSalvos.Location = new System.Drawing.Point(89, 140);
+            this.lblPontoSalvos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPontoSalvos.Name = "lblPontoSalvos";
+            this.lblPontoSalvos.Size = new System.Drawing.Size(35, 17);
+            this.lblPontoSalvos.TabIndex = 14;
+            this.lblPontoSalvos.Text = "200";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 142);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Pontos salvos: ";
+            // 
+            // btnCarregarRede
+            // 
+            this.btnCarregarRede.Name = "btnCarregarRede";
+            this.btnCarregarRede.Size = new System.Drawing.Size(152, 22);
+            this.btnCarregarRede.Text = "Carregar";
+            this.btnCarregarRede.Click += new System.EventHandler(this.btnCarregarRede_Click_1);
+            // 
+            // btnSalvarRede
+            // 
+            this.btnSalvarRede.Name = "btnSalvarRede";
+            this.btnSalvarRede.Size = new System.Drawing.Size(152, 22);
+            this.btnSalvarRede.Text = "Salvar";
+            this.btnSalvarRede.Click += new System.EventHandler(this.btnSalvarRede_Click_1);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +413,9 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numberMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberMax)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,6 +438,16 @@
         private System.Windows.Forms.ToolStripMenuItem btnCriarRede;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblPointCount;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numberMax;
+        private System.Windows.Forms.NumericUpDown numberMin;
+        private System.Windows.Forms.Label lblPontoSalvos;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolStripMenuItem btnCarregarRede;
+        private System.Windows.Forms.ToolStripMenuItem btnSalvarRede;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

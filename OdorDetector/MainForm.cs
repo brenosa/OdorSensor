@@ -62,7 +62,7 @@ namespace OdorDetector
             {
                 chartSensor.Series[i].Points.AddXY(x, arduino.sensorVoltage[i]);
             }
-            lblPointCount.Text = (++_pointsCount).ToString();
+            lblPointCount.Text = (++_pointsCount/2).ToString();
         }
 
         private string[] getChartPoints()
@@ -112,10 +112,15 @@ namespace OdorDetector
             cachorro,1.0,1.0,3.0
             peixe,3.0,2.0,1.0*/
 
-            string[] teste = { "1.0", "2.0", "2.9" };
+            //string[] chartPoints = { "1.0", "2.0", "2.9" };
+            string[] chartPoints = getChartPoints();
+            /*for (int i = 0; i < maxLimit; i++) //skip first points
+            {
+                file.Write("," + chartPoints[i]);
+            }*/
             try
             {
-                MessageBox.Show("Detectado: " + neuralNetwork.detect(teste));
+                MessageBox.Show("Detectado: " + neuralNetwork.detect(chartPoints));
             }
             catch (Exception ex)
             {
@@ -125,15 +130,17 @@ namespace OdorDetector
 
         private void btnSalvarTreinamento_Click_1(object sender, EventArgs e)
         {
+            int minLimit = _numberOfSensors * (int)numberMin.Value * 2;
+            int maxLimit = _numberOfSensors * (int)numberMax.Value * 2;
             //input
             using (StreamWriter file = new StreamWriter(inputLocation, true))
             {
                 
                 string[] chartPoints = getChartPoints();
-                if(chartPoints.Length >= _numberOfPoints)
+                if(chartPoints.Length >= maxLimit)
                 {
                     file.Write(cmbTiposGas.Text);
-                    for (int i = 50; i < _numberOfPoints; i++) //skip first points
+                    for (int i = minLimit; i < maxLimit; i++) //skip first points
                     {
                         file.Write("," + chartPoints[i]);
                     }                
@@ -143,14 +150,28 @@ namespace OdorDetector
                 else
                 {
                     MessageBox.Show("Sem dados suficientes.");
-                }
-                
-            }          
-            
+                }                
+            } 
+        }
+
+        private void btnCarregarRede_Click_1(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                neuralNetwork.load(openFileDialog1.FileName);
+            }
+        }
+
+        private void btnSalvarRede_Click_1(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                neuralNetwork.save(saveFileDialog1.FileName);
+            }
         }
 
         //*************************************************************************
-              
+
         private void mainForm_Load(object sender, EventArgs e)
         {
             loadComboBox();
@@ -175,6 +196,17 @@ namespace OdorDetector
             {
                 MessageBox.Show(ex.Message);
             }
-        }             
+        }
+
+        private void numberMin_ValueChanged(object sender, EventArgs e)
+        {
+            lblPontoSalvos.Text = (numberMax.Value - numberMin.Value).ToString();
+        }
+
+        private void numberMax_ValueChanged(object sender, EventArgs e)
+        {
+            lblPontoSalvos.Text = (numberMax.Value - numberMin.Value).ToString();
+        }
+
     }
 }
