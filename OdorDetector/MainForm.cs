@@ -100,7 +100,8 @@ namespace OdorDetector
             try
             {
                 neuralNetwork.create();
-                neuralNetwork.train();              
+                var response = neuralNetwork.train();
+                MessageBox.Show(response);
             }
             catch (Exception ex)
             {

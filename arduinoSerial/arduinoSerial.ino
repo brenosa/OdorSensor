@@ -6,8 +6,6 @@ void setup()
   pinMode(A1, INPUT);  
   pinMode(A2, INPUT);  
   pinMode(A3, INPUT);  
-  pinMode(A4, INPUT);   
-  pinMode(A5, INPUT); 
   // Inicializa a serial
   Serial.begin(9600);
 }
