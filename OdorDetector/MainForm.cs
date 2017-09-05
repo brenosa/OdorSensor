@@ -12,6 +12,7 @@ namespace OdorDetector
         Arduino arduino = new Arduino();
         double x = 0;
         static int _numberOfSensors = 4;
+        static int _pointsPerSecond = 2;
         int _pointsCount = 0;
         static int _numberOfPoints = _numberOfSensors * 100;
         String inputLocation = @"input.csv";
@@ -63,8 +64,65 @@ namespace OdorDetector
             {
                 chartSensor.Series[i].Points.AddXY(x, arduino.sensorVoltage[i]);
             }
-            lblPointCount.Text = (++_pointsCount/2).ToString();
+            lblPointCount.Text = (++_pointsCount / _pointsPerSecond).ToString();
         }
+
+        private void setCurveFeatures(int minValue, int maxValue)
+        {            
+            lblInclination.Text = inclination(minValue, maxValue);
+            lblPeaktoPeak.Text = peaktoPeak(minValue, maxValue);
+            lblSettlingTime.Text = settleTime(maxValue);
+        }
+
+        private string settleTime(int maxValue)
+        {
+            if (maxValue < _pointsCount)
+            { 
+                for (int i = 0; i < _numberOfSensors; i++)
+                {
+                    double diff = chartSensor.Series[i].Points[maxValue - 1].YValues[0] - chartSensor.Series[i].Points[maxValue - 2].YValues[0];
+                    if (Math.Abs(diff) > 0.5)
+                        return "0";
+                }
+                return chartSensor.Series[0].Points[maxValue - 1].XValue.ToString();
+            }
+            return "0";
+        }
+
+        private string peaktoPeak(int minValue, int maxValue)
+        {           
+            if (maxValue < _pointsCount)
+            {
+                string[] peaks = new string[_numberOfSensors];
+                for (int i = 0; i < _numberOfSensors; i++)
+                {
+                    double diff = chartSensor.Series[i].Points[maxValue].YValues[0] - chartSensor.Series[i].Points[minValue].YValues[0];
+                    peaks[i] = String.Format("{0:0.##}", diff) + "\r\n";
+                }
+                return string.Join("", peaks);
+            }
+            return "0";
+        }
+
+        private string inclination(int minValue, int maxValue)
+        {
+            if (maxValue < _pointsCount)
+            {
+                string[] angles = new string[_numberOfSensors];
+                double x = maxValue - minValue;
+                double angle, y;
+                
+                for (int i = 0; i < _numberOfSensors; i++)
+                {                    
+                    y = chartSensor.Series[i].Points[maxValue].YValues[0] - chartSensor.Series[i].Points[minValue].YValues[0];
+                    angle = Math.Atan(y/x) * (180/ Math.PI);
+                    angles[i] = String.Format("{0:0.##}", angle) + "•\r\n";
+                }
+                return string.Join("", angles);
+            }
+            return "0";
+        }
+
 
         private string[] getChartPoints(int minRange, int maxRange)
         {
@@ -136,8 +194,8 @@ namespace OdorDetector
 
         private void btnSalvarTreinamento_Click_1(object sender, EventArgs e)
         {
-            int minLimit = (int)numberMin.Value * 2;
-            int maxLimit = (int)numberMax.Value * 2;
+            int minLimit = (int)numberMin.Value * _pointsPerSecond;
+            int maxLimit = (int)numberMax.Value * _pointsPerSecond;
             //input
             using (StreamWriter file = new StreamWriter(inputLocation, true))
             {
@@ -158,7 +216,9 @@ namespace OdorDetector
                 {
                     MessageBox.Show("Sem dados suficientes.");
                 }                
-            }            
+            }
+            var location = cmbTiposGas.Text + DateTime.Now.ToShortDateString().Replace("/","_") + DateTime.Now.ToShortTimeString().Replace(":","_") + ".png";
+            chartSensor.SaveImage(location, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
         }
 
         private void btnCarregarRede_Click_1(object sender, EventArgs e)
@@ -208,11 +268,13 @@ namespace OdorDetector
         private void numberMin_ValueChanged(object sender, EventArgs e)
         {
             lblPontoSalvos.Text = (numberMax.Value - numberMin.Value).ToString();
+            setCurveFeatures((int)numberMin.Value * _pointsPerSecond, (int)numberMax.Value * _pointsPerSecond);
         }
 
         private void numberMax_ValueChanged(object sender, EventArgs e)
         {
             lblPontoSalvos.Text = (numberMax.Value - numberMin.Value).ToString();
+            setCurveFeatures((int)numberMin.Value * _pointsPerSecond, (int)numberMax.Value * _pointsPerSecond);
         }
 
     }

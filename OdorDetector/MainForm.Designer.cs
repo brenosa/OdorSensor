@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.chartSensor = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -66,6 +66,13 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblSettlingTime = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblInclination = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblPeaktoPeak = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartSensor)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPorta)).BeginInit();
@@ -74,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numberMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // chartSensor
@@ -81,65 +89,65 @@
             this.chartSensor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.MajorGrid.Interval = 1D;
-            chartArea1.AxisX.MajorTickMark.Interval = 30D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.MinorTickMark.Interval = 50D;
-            chartArea1.AxisX.ScaleView.SmallScrollSizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisX.ScrollBar.BackColor = System.Drawing.Color.Silver;
-            chartArea1.AxisX.Title = "Time (s)";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.Interval = 1000D;
-            chartArea1.AxisY.MajorGrid.Interval = 500D;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.MajorTickMark.Enabled = false;
-            chartArea1.AxisY.MajorTickMark.Interval = 0.2D;
-            chartArea1.AxisY.Maximum = 5000D;
-            chartArea1.AxisY.Title = "Sensor output (mV)";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.CursorX.IsUserEnabled = true;
-            chartArea1.CursorX.IsUserSelectionEnabled = true;
-            chartArea1.Name = "ChartArea1";
-            this.chartSensor.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartSensor.Legends.Add(legend1);
-            this.chartSensor.Location = new System.Drawing.Point(195, 34);
+            chartArea2.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.Triangle;
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisX.MajorGrid.Interval = 1D;
+            chartArea2.AxisX.MajorTickMark.Interval = 30D;
+            chartArea2.AxisX.Minimum = 0D;
+            chartArea2.AxisX.MinorTickMark.Interval = 50D;
+            chartArea2.AxisX.ScaleView.SmallScrollSizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisX.ScrollBar.BackColor = System.Drawing.Color.Silver;
+            chartArea2.AxisX.Title = "Time (s)";
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.Interval = 1000D;
+            chartArea2.AxisY.MajorGrid.Interval = 500D;
+            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea2.AxisY.MajorTickMark.Enabled = false;
+            chartArea2.AxisY.MajorTickMark.Interval = 0.2D;
+            chartArea2.AxisY.Maximum = 5000D;
+            chartArea2.AxisY.Title = "Sensor output (mV)";
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.CursorX.IsUserEnabled = true;
+            chartArea2.CursorX.IsUserSelectionEnabled = true;
+            chartArea2.Name = "ChartArea1";
+            this.chartSensor.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartSensor.Legends.Add(legend2);
+            this.chartSensor.Location = new System.Drawing.Point(170, 34);
             this.chartSensor.Margin = new System.Windows.Forms.Padding(2);
             this.chartSensor.Name = "chartSensor";
             this.chartSensor.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.Red;
-            series1.Legend = "Legend1";
-            series1.Name = "Amonia, Benzeno e Alcool";
-            series1.Points.Add(dataPoint1);
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Color = System.Drawing.Color.Blue;
-            series2.Legend = "Legend1";
-            series2.Name = "Alcool";
-            series2.Points.Add(dataPoint2);
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Color = System.Drawing.Color.Gold;
-            series3.Legend = "Legend1";
-            series3.Name = "Hidrogenio";
-            series3.Points.Add(dataPoint3);
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series4.Legend = "Legend1";
-            series4.Name = "Gas Carbonico";
-            series4.Points.Add(dataPoint4);
-            this.chartSensor.Series.Add(series1);
-            this.chartSensor.Series.Add(series2);
-            this.chartSensor.Series.Add(series3);
-            this.chartSensor.Series.Add(series4);
-            this.chartSensor.Size = new System.Drawing.Size(855, 384);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Color = System.Drawing.Color.Red;
+            series5.Legend = "Legend1";
+            series5.Name = "Amonia, Benzeno e Alcool";
+            series5.Points.Add(dataPoint5);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.Color = System.Drawing.Color.Blue;
+            series6.Legend = "Legend1";
+            series6.Name = "Alcool";
+            series6.Points.Add(dataPoint6);
+            series7.BorderWidth = 2;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Color = System.Drawing.Color.Gold;
+            series7.Legend = "Legend1";
+            series7.Name = "Hidrogenio";
+            series7.Points.Add(dataPoint7);
+            series8.BorderWidth = 2;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series8.Legend = "Legend1";
+            series8.Name = "Gas Carbonico";
+            series8.Points.Add(dataPoint8);
+            this.chartSensor.Series.Add(series5);
+            this.chartSensor.Series.Add(series6);
+            this.chartSensor.Series.Add(series7);
+            this.chartSensor.Series.Add(series8);
+            this.chartSensor.Size = new System.Drawing.Size(880, 639);
             this.chartSensor.TabIndex = 0;
             this.chartSensor.Text = "Sensor";
             // 
@@ -153,14 +161,14 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(130, 127);
+            this.groupBox1.Size = new System.Drawing.Size(145, 127);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opções";
             // 
             // txtPorta
             // 
-            this.txtPorta.Location = new System.Drawing.Point(76, 24);
+            this.txtPorta.Location = new System.Drawing.Point(85, 24);
             this.txtPorta.Name = "txtPorta";
             this.txtPorta.Size = new System.Drawing.Size(39, 20);
             this.txtPorta.TabIndex = 6;
@@ -172,7 +180,7 @@
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(12, 53);
+            this.btnConectar.Location = new System.Drawing.Point(21, 53);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(104, 25);
             this.btnConectar.TabIndex = 3;
@@ -183,7 +191,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 26);
+            this.label1.Location = new System.Drawing.Point(19, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 4;
@@ -191,7 +199,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(12, 89);
+            this.btnTest.Location = new System.Drawing.Point(21, 89);
             this.btnTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(104, 21);
@@ -262,7 +270,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(130, 201);
+            this.groupBox2.Size = new System.Drawing.Size(145, 201);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Treinamento";
@@ -271,17 +279,17 @@
             // 
             this.lblPontoSalvos.AutoSize = true;
             this.lblPontoSalvos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPontoSalvos.Location = new System.Drawing.Point(89, 140);
+            this.lblPontoSalvos.Location = new System.Drawing.Point(99, 140);
             this.lblPontoSalvos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPontoSalvos.Name = "lblPontoSalvos";
-            this.lblPontoSalvos.Size = new System.Drawing.Size(35, 17);
+            this.lblPontoSalvos.Size = new System.Drawing.Size(26, 17);
             this.lblPontoSalvos.TabIndex = 14;
-            this.lblPontoSalvos.Text = "200";
+            this.lblPontoSalvos.Text = "50";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 142);
+            this.label7.Location = new System.Drawing.Point(14, 142);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 13);
@@ -291,7 +299,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 88);
+            this.label4.Location = new System.Drawing.Point(23, 88);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
@@ -301,7 +309,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 44);
+            this.label3.Location = new System.Drawing.Point(23, 44);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
@@ -310,9 +318,14 @@
             // 
             // numberMax
             // 
-            this.numberMax.Location = new System.Drawing.Point(14, 107);
+            this.numberMax.Location = new System.Drawing.Point(24, 107);
             this.numberMax.Maximum = new decimal(new int[] {
             5000,
+            0,
+            0,
+            0});
+            this.numberMax.Minimum = new decimal(new int[] {
+            2,
             0,
             0,
             0});
@@ -328,7 +341,7 @@
             // 
             // numberMin
             // 
-            this.numberMin.Location = new System.Drawing.Point(13, 62);
+            this.numberMin.Location = new System.Drawing.Point(23, 62);
             this.numberMin.Maximum = new decimal(new int[] {
             2500,
             0,
@@ -347,7 +360,7 @@
             // cmbTiposGas
             // 
             this.cmbTiposGas.FormattingEnabled = true;
-            this.cmbTiposGas.Location = new System.Drawing.Point(12, 16);
+            this.cmbTiposGas.Location = new System.Drawing.Point(22, 16);
             this.cmbTiposGas.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTiposGas.Name = "cmbTiposGas";
             this.cmbTiposGas.Size = new System.Drawing.Size(105, 21);
@@ -355,7 +368,7 @@
             // 
             // btnSalvarTreinamento
             // 
-            this.btnSalvarTreinamento.Location = new System.Drawing.Point(12, 168);
+            this.btnSalvarTreinamento.Location = new System.Drawing.Point(22, 168);
             this.btnSalvarTreinamento.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalvarTreinamento.Name = "btnSalvarTreinamento";
             this.btnSalvarTreinamento.Size = new System.Drawing.Size(104, 21);
@@ -367,7 +380,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 397);
+            this.label2.Location = new System.Drawing.Point(5, 28);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 13);
@@ -378,7 +391,7 @@
             // 
             this.lblPointCount.AutoSize = true;
             this.lblPointCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPointCount.Location = new System.Drawing.Point(116, 397);
+            this.lblPointCount.Location = new System.Drawing.Point(106, 25);
             this.lblPointCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPointCount.Name = "lblPointCount";
             this.lblPointCount.Size = new System.Drawing.Size(17, 17);
@@ -396,24 +409,103 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(1055, 37);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 320);
+            this.pictureBox1.Size = new System.Drawing.Size(25, 575);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lblPeaktoPeak);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.lblInclination);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.lblSettlingTime);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.lblPointCount);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Location = new System.Drawing.Point(20, 376);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(145, 262);
+            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Características";
+            // 
+            // lblSettlingTime
+            // 
+            this.lblSettlingTime.AutoSize = true;
+            this.lblSettlingTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSettlingTime.Location = new System.Drawing.Point(106, 49);
+            this.lblSettlingTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSettlingTime.Name = "lblSettlingTime";
+            this.lblSettlingTime.Size = new System.Drawing.Size(17, 17);
+            this.lblSettlingTime.TabIndex = 12;
+            this.lblSettlingTime.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 52);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 26);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Tempo de \r\nacomodação:";
+            // 
+            // lblInclination
+            // 
+            this.lblInclination.AutoSize = true;
+            this.lblInclination.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInclination.Location = new System.Drawing.Point(81, 88);
+            this.lblInclination.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInclination.Name = "lblInclination";
+            this.lblInclination.Size = new System.Drawing.Size(17, 17);
+            this.lblInclination.TabIndex = 14;
+            this.lblInclination.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(5, 89);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 13);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Inclinação:";
+            // 
+            // lblPeaktoPeak
+            // 
+            this.lblPeaktoPeak.AutoSize = true;
+            this.lblPeaktoPeak.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPeaktoPeak.Location = new System.Drawing.Point(80, 162);
+            this.lblPeaktoPeak.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPeaktoPeak.Name = "lblPeaktoPeak";
+            this.lblPeaktoPeak.Size = new System.Drawing.Size(17, 17);
+            this.lblPeaktoPeak.TabIndex = 16;
+            this.lblPeaktoPeak.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(5, 163);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(60, 13);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Pico a pico";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 430);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1092, 685);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblPointCount);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chartSensor);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
@@ -433,6 +525,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numberMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,6 +560,13 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lblPeaktoPeak;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblInclination;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblSettlingTime;
+        private System.Windows.Forms.Label label6;
     }
 }
 
