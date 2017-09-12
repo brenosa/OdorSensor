@@ -39,7 +39,6 @@
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.chartSensor = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPorta = new System.Windows.Forms.NumericUpDown();
@@ -65,14 +64,13 @@
             this.lblPointCount = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lblSettlingTime = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblInclination = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.lblPeaktoPeak = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.lblMax = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblSettlingTime = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartSensor)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPorta)).BeginInit();
@@ -80,7 +78,6 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,7 +110,7 @@
             this.chartSensor.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartSensor.Legends.Add(legend2);
-            this.chartSensor.Location = new System.Drawing.Point(170, 34);
+            this.chartSensor.Location = new System.Drawing.Point(11, 34);
             this.chartSensor.Margin = new System.Windows.Forms.Padding(2);
             this.chartSensor.Name = "chartSensor";
             this.chartSensor.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
@@ -147,28 +144,30 @@
             this.chartSensor.Series.Add(series6);
             this.chartSensor.Series.Add(series7);
             this.chartSensor.Series.Add(series8);
-            this.chartSensor.Size = new System.Drawing.Size(880, 639);
+            this.chartSensor.Size = new System.Drawing.Size(935, 604);
             this.chartSensor.TabIndex = 0;
             this.chartSensor.Text = "Sensor";
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtPorta);
             this.groupBox1.Controls.Add(this.btnConectar);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnTest);
-            this.groupBox1.Location = new System.Drawing.Point(20, 31);
+            this.groupBox1.Location = new System.Drawing.Point(11, 666);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(145, 127);
+            this.groupBox1.Size = new System.Drawing.Size(159, 157);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opções";
             // 
             // txtPorta
             // 
-            this.txtPorta.Location = new System.Drawing.Point(85, 24);
+            this.txtPorta.Location = new System.Drawing.Point(91, 24);
             this.txtPorta.Name = "txtPorta";
             this.txtPorta.Size = new System.Drawing.Size(39, 20);
             this.txtPorta.TabIndex = 6;
@@ -180,9 +179,9 @@
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(21, 53);
+            this.btnConectar.Location = new System.Drawing.Point(26, 59);
             this.btnConectar.Name = "btnConectar";
-            this.btnConectar.Size = new System.Drawing.Size(104, 25);
+            this.btnConectar.Size = new System.Drawing.Size(104, 29);
             this.btnConectar.TabIndex = 3;
             this.btnConectar.Text = "Ativar Sensores";
             this.btnConectar.UseVisualStyleBackColor = true;
@@ -191,7 +190,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 26);
+            this.label1.Location = new System.Drawing.Point(24, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 4;
@@ -199,10 +198,10 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(21, 89);
+            this.btnTest.Location = new System.Drawing.Point(27, 108);
             this.btnTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(104, 21);
+            this.btnTest.Size = new System.Drawing.Size(104, 27);
             this.btnTest.TabIndex = 2;
             this.btnTest.Text = "Identificar Aroma";
             this.btnTest.UseVisualStyleBackColor = true;
@@ -221,7 +220,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1092, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(965, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -258,6 +257,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.lblPontoSalvos);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label4);
@@ -266,11 +267,11 @@
             this.groupBox2.Controls.Add(this.numberMin);
             this.groupBox2.Controls.Add(this.cmbTiposGas);
             this.groupBox2.Controls.Add(this.btnSalvarTreinamento);
-            this.groupBox2.Location = new System.Drawing.Point(20, 161);
+            this.groupBox2.Location = new System.Drawing.Point(183, 666);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(145, 201);
+            this.groupBox2.Size = new System.Drawing.Size(293, 157);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Treinamento";
@@ -279,7 +280,7 @@
             // 
             this.lblPontoSalvos.AutoSize = true;
             this.lblPontoSalvos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPontoSalvos.Location = new System.Drawing.Point(99, 140);
+            this.lblPontoSalvos.Location = new System.Drawing.Point(237, 17);
             this.lblPontoSalvos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPontoSalvos.Name = "lblPontoSalvos";
             this.lblPontoSalvos.Size = new System.Drawing.Size(26, 17);
@@ -289,7 +290,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 142);
+            this.label7.Location = new System.Drawing.Point(156, 27);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 13);
@@ -299,7 +300,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 88);
+            this.label4.Location = new System.Drawing.Point(29, 97);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
@@ -309,7 +310,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 44);
+            this.label3.Location = new System.Drawing.Point(29, 53);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
@@ -318,7 +319,7 @@
             // 
             // numberMax
             // 
-            this.numberMax.Location = new System.Drawing.Point(24, 107);
+            this.numberMax.Location = new System.Drawing.Point(30, 116);
             this.numberMax.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -341,7 +342,7 @@
             // 
             // numberMin
             // 
-            this.numberMin.Location = new System.Drawing.Point(23, 62);
+            this.numberMin.Location = new System.Drawing.Point(29, 71);
             this.numberMin.Maximum = new decimal(new int[] {
             2500,
             0,
@@ -360,7 +361,7 @@
             // cmbTiposGas
             // 
             this.cmbTiposGas.FormattingEnabled = true;
-            this.cmbTiposGas.Location = new System.Drawing.Point(22, 16);
+            this.cmbTiposGas.Location = new System.Drawing.Point(28, 25);
             this.cmbTiposGas.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTiposGas.Name = "cmbTiposGas";
             this.cmbTiposGas.Size = new System.Drawing.Size(105, 21);
@@ -368,10 +369,10 @@
             // 
             // btnSalvarTreinamento
             // 
-            this.btnSalvarTreinamento.Location = new System.Drawing.Point(22, 168);
+            this.btnSalvarTreinamento.Location = new System.Drawing.Point(159, 92);
             this.btnSalvarTreinamento.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalvarTreinamento.Name = "btnSalvarTreinamento";
-            this.btnSalvarTreinamento.Size = new System.Drawing.Size(104, 21);
+            this.btnSalvarTreinamento.Size = new System.Drawing.Size(104, 44);
             this.btnSalvarTreinamento.TabIndex = 2;
             this.btnSalvarTreinamento.Text = "Salvar";
             this.btnSalvarTreinamento.UseVisualStyleBackColor = true;
@@ -380,7 +381,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 28);
+            this.label2.Location = new System.Drawing.Point(18, 25);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 13);
@@ -391,7 +392,7 @@
             // 
             this.lblPointCount.AutoSize = true;
             this.lblPointCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPointCount.Location = new System.Drawing.Point(106, 25);
+            this.lblPointCount.Location = new System.Drawing.Point(121, 23);
             this.lblPointCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPointCount.Name = "lblPointCount";
             this.lblPointCount.Size = new System.Drawing.Size(17, 17);
@@ -402,82 +403,30 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1055, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 575);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.lblPeaktoPeak);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.lblInclination);
+            this.groupBox3.Controls.Add(this.lblMax);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.lblSettlingTime);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.lblPointCount);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(20, 376);
+            this.groupBox3.Location = new System.Drawing.Point(492, 666);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(145, 262);
+            this.groupBox3.Size = new System.Drawing.Size(454, 157);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Características";
-            // 
-            // lblSettlingTime
-            // 
-            this.lblSettlingTime.AutoSize = true;
-            this.lblSettlingTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSettlingTime.Location = new System.Drawing.Point(106, 49);
-            this.lblSettlingTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSettlingTime.Name = "lblSettlingTime";
-            this.lblSettlingTime.Size = new System.Drawing.Size(17, 17);
-            this.lblSettlingTime.TabIndex = 12;
-            this.lblSettlingTime.Text = "0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 52);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 26);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Tempo de \r\nacomodação:";
-            // 
-            // lblInclination
-            // 
-            this.lblInclination.AutoSize = true;
-            this.lblInclination.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInclination.Location = new System.Drawing.Point(81, 88);
-            this.lblInclination.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblInclination.Name = "lblInclination";
-            this.lblInclination.Size = new System.Drawing.Size(17, 17);
-            this.lblInclination.TabIndex = 14;
-            this.lblInclination.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 89);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 13);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "Inclinação:";
             // 
             // lblPeaktoPeak
             // 
             this.lblPeaktoPeak.AutoSize = true;
             this.lblPeaktoPeak.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPeaktoPeak.Location = new System.Drawing.Point(80, 162);
+            this.lblPeaktoPeak.Location = new System.Drawing.Point(255, 97);
             this.lblPeaktoPeak.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPeaktoPeak.Name = "lblPeaktoPeak";
             this.lblPeaktoPeak.Size = new System.Drawing.Size(17, 17);
@@ -487,21 +436,62 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 163);
+            this.label11.Location = new System.Drawing.Point(185, 98);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 13);
             this.label11.TabIndex = 15;
             this.label11.Text = "Pico a pico";
             // 
+            // lblMax
+            // 
+            this.lblMax.AutoSize = true;
+            this.lblMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMax.Location = new System.Drawing.Point(254, 24);
+            this.lblMax.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMax.Name = "lblMax";
+            this.lblMax.Size = new System.Drawing.Size(17, 17);
+            this.lblMax.TabIndex = 14;
+            this.lblMax.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(185, 25);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Max pico:";
+            // 
+            // lblSettlingTime
+            // 
+            this.lblSettlingTime.AutoSize = true;
+            this.lblSettlingTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSettlingTime.Location = new System.Drawing.Point(99, 92);
+            this.lblSettlingTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSettlingTime.Name = "lblSettlingTime";
+            this.lblSettlingTime.Size = new System.Drawing.Size(17, 17);
+            this.lblSettlingTime.TabIndex = 12;
+            this.lblSettlingTime.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 83);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 26);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Tempo de \r\nacomodação:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1092, 685);
+            this.ClientSize = new System.Drawing.Size(965, 834);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chartSensor);
@@ -524,7 +514,6 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -559,11 +548,10 @@
         private System.Windows.Forms.ToolStripMenuItem btnSalvarRede;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lblPeaktoPeak;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label lblInclination;
+        private System.Windows.Forms.Label lblMax;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblSettlingTime;
         private System.Windows.Forms.Label label6;
