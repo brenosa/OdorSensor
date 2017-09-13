@@ -426,7 +426,7 @@
             // 
             this.lblPeaktoPeak.AutoSize = true;
             this.lblPeaktoPeak.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPeaktoPeak.Location = new System.Drawing.Point(255, 97);
+            this.lblPeaktoPeak.Location = new System.Drawing.Point(254, 96);
             this.lblPeaktoPeak.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPeaktoPeak.Name = "lblPeaktoPeak";
             this.lblPeaktoPeak.Size = new System.Drawing.Size(17, 17);
@@ -436,12 +436,12 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(185, 98);
+            this.label11.Location = new System.Drawing.Point(178, 100);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 13);
+            this.label11.Size = new System.Drawing.Size(63, 13);
             this.label11.TabIndex = 15;
-            this.label11.Text = "Pico a pico";
+            this.label11.Text = "Pico a pico:";
             // 
             // lblMax
             // 

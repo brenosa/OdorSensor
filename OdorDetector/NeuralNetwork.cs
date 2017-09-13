@@ -10,6 +10,8 @@ using Encog.ML.Data.Versatile.Sources;
 using Encog.ML.Data.Versatile.Columns;
 using Encog.Util.CSV;
 using System.IO;
+using Encog.Util;
+using Encog.Util.Simple;
 
 namespace OdorDetector
 {
@@ -25,6 +27,7 @@ namespace OdorDetector
             VersatileMLDataSet input = getCSVData();           
             model  = new EncogModel(input);
             model.SelectMethod(input, MLMethodFactory.TypeFeedforward);
+            model.Report = new ConsoleStatusReportable();
             input.Normalize();
             normilizedInput = input;                   
         }       
@@ -32,7 +35,7 @@ namespace OdorDetector
         public string train()
         {
             // Hold back some data for a final validation.
-            model.HoldBackValidation(0.3, false, 1001);
+            model.HoldBackValidation(0.3, true, 1001);
             // Choose whatever is the default training type for this model.
             model.SelectTrainingType(normilizedInput);
             // Use a 5-fold cross-validated train.  Return the best method found.            
@@ -68,17 +71,17 @@ namespace OdorDetector
 
         private VersatileMLDataSet getCSVData()
         {
-            var source = new CSVDataSource(inputLocation, false, CSVFormat.DecimalPoint);
+            IVersatileDataSource source = new CSVDataSource(inputLocation, false, CSVFormat.DecimalPoint);
             var csv = new ReadCSV(inputLocation, false, CSVFormat.DecimalPoint);
             csv.Next();
             VersatileMLDataSet data = new VersatileMLDataSet(source);
-            var outputColumnDefinition = data.DefineSourceColumn("y", 0, ColumnType.Nominal);
+            ColumnDefinition outputColumnDefinition = data.DefineSourceColumn("y", 0, ColumnType.Nominal);
             
             for (int i = 1; i < csv.ColumnCount; i++)
             {
                 data.DefineSourceColumn("x", i, ColumnType.Continuous);
             }
-
+            
             data.Analyze();
             data.DefineSingleOutputOthersInput(outputColumnDefinition);
             return data;
@@ -89,6 +92,9 @@ namespace OdorDetector
         {
             //FileInfo networkFile = new FileInfo(location);
             Encog.Persist.EncogDirectoryPersistence.SaveObject(File.Create(location), (EncogModel) model);
+           //Encog.Persist.EncogDirectoryPersistence.SaveObject(networkFile, (EncogModel)model);
+            //SerializeObject.Save(location, (EncogModel) model);
+            //EncogUtility.SaveEGB(FileInfo location, data);
         }
 
         public void load(string filePath)

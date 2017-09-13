@@ -13,8 +13,8 @@ namespace OdorDetector
         int _pointsCount = 0;
         static int _numberOfSensors = 4;
         static int _pointsPerSecond = 2; 
-        static int _pointCount = 8;
-        static double _diffTolerance = 0.5;
+        static int _settlePointsCount = 10;
+        static double _diffTolerance = 1;
 
         String inputLocation = @"input.csv";
 
@@ -77,11 +77,11 @@ namespace OdorDetector
 
         private string settleTime(int minValue, int maxValue)
         {            
-            if (maxValue < _pointsCount - _pointCount)
+            if (maxValue > _settlePointsCount && maxValue < _pointsCount)
             { 
                 for (int i = 0; i < _numberOfSensors; i++)
                 {
-                    double diff = chartSensor.Series[i].Points[maxValue].YValues[0] - chartSensor.Series[i].Points[maxValue - _pointCount].YValues[0];
+                    double diff = chartSensor.Series[i].Points[maxValue].YValues[0] - chartSensor.Series[i].Points[maxValue - _settlePointsCount].YValues[0];
                     if (Math.Abs(diff) > _diffTolerance)
                         return "0";
                 }
@@ -118,41 +118,17 @@ namespace OdorDetector
                 return string.Join(",", maxPeak);
             }
             return "0";
+        } 
+
+        private string getChartParameters()
+        {            
+            return lblMax.Text + "," + lblPeaktoPeak.Text + "," + lblSettlingTime.Text;
         }
 
-
-        private string[] getChartPoints(int minRange, int maxRange)
+        private void saveChart()
         {
-            var rows = new List<string>();
-            if (chartSensor.Series[0].Points.Count > maxRange)
-            { 
-                //Y values
-                for (int i = 0; i < _numberOfSensors; i++)//sensors
-                {                    
-                    for (int j = minRange; j < maxRange; j++)//points                         
-                    {
-                        rows.Add(((int)chartSensor.Series[i].Points[j].YValues[0]).ToString());
-                    }
-                }
-            }            
-            return rows.ToArray();
-        }
-
-        private string[] getChartParameters(int minRange, int maxRange)
-        {
-            var rows = new List<string>();
-            if (chartSensor.Series[0].Points.Count > maxRange)
-            {
-                //Y values
-                for (int i = 0; i < _numberOfSensors; i++)//sensors
-                {
-                    for (int j = minRange; j < maxRange; j++)//points                         
-                    {
-                        rows.Add(((int)chartSensor.Series[i].Points[j].YValues[0]).ToString());
-                    }
-                }
-            }
-            return rows.ToArray();
+            var location = cmbTiposGas.Text + DateTime.Now.ToShortDateString().Replace("/", "_") + DateTime.Now.ToShortTimeString().Replace(":", "_") + ".png";
+            chartSensor.SaveImage(location, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
         }
 
         private void clearChartSeries()
@@ -171,6 +147,8 @@ namespace OdorDetector
         {
             try
             {
+                //IrisClassification a = new IrisClassification();
+                //a.Execute();
                 neuralNetwork.create();
                 var response = neuralNetwork.train();
                 MessageBox.Show(response);
@@ -182,17 +160,10 @@ namespace OdorDetector
         }
 
         private void btnTest_Click(object sender, EventArgs e)
-        {          
-            int minLimit = (int)numberMin.Value * _pointsPerSecond;
-            int maxLimit = (int)numberMax.Value * _pointsPerSecond;
-            string[] chartPoints = getChartPoints(minLimit, maxLimit);
-            /*for (int i = 0; i < maxLimit; i++) //skip first points
-            {
-                file.Write("," + chartPoints[i]);
-            }*/
+        { 
             try
             {
-                MessageBox.Show("Detectado: " + neuralNetwork.detect(chartPoints));
+                MessageBox.Show("Detectado: " + neuralNetwork.detect(getChartParameters().Split(',')));
             }
             catch (Exception ex)
             {
@@ -207,34 +178,16 @@ namespace OdorDetector
             //input
             using (StreamWriter file = new StreamWriter(inputLocation, true))
             {
-                file.WriteLine(cmbTiposGas.Text + "," + lblMax.Text + "," + lblPeaktoPeak.Text + "," + lblSettlingTime.Text);
-                /*string[] chartPoints = getChartPoints(minLimit, maxLimit);
-                if (chartPoints.Length > 0)
-                { 
-                    file.Write(cmbTiposGas.Text);
-                    for (int i = 0; i < chartPoints.Length; i++)
-                    {
-                        file.Write("," + chartPoints[i]);
-                    }                
-                    file.WriteLine();
-                    MessageBox.Show("Salvo");
-                    numberMin.Value = numberMax.Value;
-                    numberMax.Value = numberMax.Value + 50;
-                }
-                else
-                {
-                    MessageBox.Show("Sem dados suficientes.");
-                } */
+                file.WriteLine(cmbTiposGas.Text + "," + getChartParameters());                
             }
-            var location = cmbTiposGas.Text + DateTime.Now.ToShortDateString().Replace("/","_") + DateTime.Now.ToShortTimeString().Replace(":","_") + ".png";
-            chartSensor.SaveImage(location, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
+            saveChart();
         }
 
         private void btnCarregarRede_Click_1(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                neuralNetwork.load(openFileDialog1.FileName);
+                //neuralNetwork.load(openFileDialog1.FileName);
             }
         }
 
@@ -242,7 +195,7 @@ namespace OdorDetector
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                neuralNetwork.save(saveFileDialog1.FileName);
+                //neuralNetwork.save(saveFileDialog1.FileName + ".eg");
             }
         }
 
@@ -273,6 +226,7 @@ namespace OdorDetector
                 MessageBox.Show(ex.Message);
             }
         }
+        
 
         private void numberMin_ValueChanged(object sender, EventArgs e)
         {
