@@ -29,7 +29,8 @@ namespace OdorDetector
             model.SelectMethod(input, MLMethodFactory.TypeFeedforward);
             model.Report = new ConsoleStatusReportable();
             input.Normalize();
-            normilizedInput = input;                   
+            normilizedInput = input;    
+            
         }       
 
         public string train()
@@ -42,10 +43,12 @@ namespace OdorDetector
             trainingMethod = (IMLRegression)model.Crossvalidate(5, true);
 
             // Display the training and validation errors.
-            return "Training error: " +
+            return "Training error: " +                
                 model.CalculateError(trainingMethod, model.TrainingDataset) +
                 "\r\nValidation error: " + model.CalculateError(trainingMethod, model.ValidationDataset) +
-                "\r\nFinal model: " + trainingMethod;            
+                "\r\nFinal model: " + trainingMethod +
+                 "\r\nInput: " + trainingMethod.InputCount +
+                 "\r\nOutput: " + trainingMethod.OutputCount;            
         }
 
         public string detect(string[] inputData)
